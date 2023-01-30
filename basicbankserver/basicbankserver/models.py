@@ -1,4 +1,4 @@
-from  django.db import models
+from django.db import models
 
 class accounts(models.Model):
     account_number = models.CharField(max_length=30)
