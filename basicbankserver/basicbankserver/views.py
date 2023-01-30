@@ -1,9 +1,10 @@
 from django.shortcuts import render
+from django.db import models
 
 
 def home(request):
     #this view will return every account
-    return render('hello stizz')
+    return models.accounts.objects.all()
 
 
 def one(request):
