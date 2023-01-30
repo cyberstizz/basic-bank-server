@@ -13,7 +13,7 @@ def one(request):
 def add(request):
     pass
 
-
+#this view will delete an entire account
 def delete_one(request):
     pass
 
