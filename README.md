@@ -23,7 +23,7 @@ just a simple Django backend with the built in sqlite database to test communica
 this app pretty much comes with the usual setup. urls.py for a list of paths, models.py which holds the orm for the database schema and views.py which describe the actual routes. nothing to crazy here
 
 ### final thought
-#### this project was designed to as a test and a simple project. Some parts of a django server are comre convenient than say express, however Django is very opinionated, and does not leave as much room for creativity as I would like. either way its still cool. Thanks for reading and happy coding!!!
+#### this project was designed as a test and a simple project. Some parts of a django server are more convenient than say express, however Django is very opinionated, and does not leave as much room for creativity as I would like. either way its still cool. Thanks for reading and happy coding!!!
 
 
 ### for more projects by CyberStizz visit: [Charleslambjr.com](https://www.charleslambjr.com/)
