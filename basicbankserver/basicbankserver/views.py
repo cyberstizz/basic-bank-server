@@ -1,10 +1,10 @@
 from django.shortcuts import render
-from django.db import models
+from basicbankserver.models import accounts
 
 
 def home(request):
     #this view will return every account
-    return models.accounts.objects.all()
+    return accounts.objects.all()
 
 
 def one(request):
