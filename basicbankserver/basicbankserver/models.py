@@ -1,5 +1,6 @@
-from django.urls import path
-from  django.urls import models
+from  django.db import models
 
 class accounts(models.Model):
-    pass
+    account_number = models.CharField(max_length=30)
+    account_balance = models.CharField(max_length=30)
+    account_name = models.CharField(max_length=30)
