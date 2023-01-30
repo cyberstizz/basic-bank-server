@@ -20,3 +20,7 @@ def delete(request):
 #this view will subtract from a balance
 def subtract(request):
     pass
+
+#thi view will create an account
+def create(request):
+    pass
