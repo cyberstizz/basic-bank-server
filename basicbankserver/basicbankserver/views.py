@@ -9,7 +9,7 @@ def home(request):
 def one(request):
     pass
 
-
+#this view is to make deposits to an account
 def add(request):
     pass
 
