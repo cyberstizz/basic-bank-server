@@ -14,7 +14,7 @@ def add(request):
     pass
 
 #this view will delete an entire account
-def delete_one(request):
+def delete(request):
     pass
 
 #this view will subtract from a balance
