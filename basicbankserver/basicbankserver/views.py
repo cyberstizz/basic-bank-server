@@ -21,11 +21,11 @@ def home(request):
 def one(request, name):
     #this view will return one account
     the_account = accounts.objects.get(account_name={name})
-
+    #this creates a list to store everything into
     list_to_send = []
-
+    #this will add each desired property to the list
     list_to_send.append(the_account.account_name, the_account.account_balance, the_account.account_number)
-
+    #and returning that list
     return HttpResponse(list_to_send)
 
 
@@ -56,8 +56,8 @@ def delete(request, account_name, account_number):
     the_account = accounts.objects.get(account_name=account_name)
     if the_account.account_number == account_number:
         accounts.objects.delete(account_name=account_name)
-
-    return HttpResponse(the_account)
+    #and returning the 
+    return HttpResponse(account_name)
 
 
 
