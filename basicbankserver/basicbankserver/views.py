@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 def home(request):
     #this view will return every account
-    everything = accounts.objects.get(account_balance='4758392045').account_name
+    everything = accounts.objects.all().account_name
 
 
     return HttpResponse(f'<p>{everything}</p>')  
