@@ -4,7 +4,8 @@ from basicbankserver.models import accounts
 
 def home(request):
     #this view will return every account
-    return accounts.objects.all()
+    everything = accounts.objects.all()
+    return render(request, everything)
 
 
 def one(request):
