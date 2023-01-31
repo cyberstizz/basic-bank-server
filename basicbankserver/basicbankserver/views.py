@@ -51,12 +51,37 @@ def add(request, account, deposit):
 
 
 #this view will delete an entire account
-def delete(request, account):
-    pass
+def delete(request, account_name, account_number):
+    #this will delete the account requested if the account number is correct, then return it
+    the_account = accounts.objects.get(account_name=account_name)
+    if the_account.account_number == account_number:
+        accounts.objects.delete(account_name=account_name)
+
+    return HttpResponse(the_account)
+
+
+
 
 #this view will subtract from a balance
-def subtract(request):
-    pass
+def subtract(request, account, withdrawal):
+    #this will put the correct account in a variable
+    the_account = accounts.objects.get(account_name={account})
+
+    #this will decrement the balance if my conditions are met
+    if the_account.account_balance - withdrawal < 0:
+        return HttpResponse('stop trying to bankrupt yourself')
+    elif the_account.account_balance > 0:
+        the_account.account_balance = the_account.account_balance - withdrawal
+
+
+    #this will put the balance into a variable
+    the_balance = the_account.account_balance
+
+    #this will return the current balance
+    return HttpResponse(the_balance)
+
+
+
 
 #thi view will create an account
 def create(request):
