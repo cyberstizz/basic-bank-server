@@ -35,8 +35,12 @@ def add(request, account, deposit):
     #this will put the correct account in a variable
     the_account = accounts.objects.get(account_name={account})
 
-    #this will
-    the_account.account_balance = the_account.account_balance + deposit
+    #this will increment the balance
+    if the_account.account_balance + deposit > 100000000:
+        return HttpResponse('stop being greedy')
+    elif the_account.account_balance < 100000000:
+        the_account.account_balance = the_account.account_balance + deposit
+
 
     #this will put the balance into a variable
     the_balance = the_account.account_balance
@@ -44,8 +48,10 @@ def add(request, account, deposit):
     #this will return the current balance
     return HttpResponse(the_balance)
 
+
+
 #this view will delete an entire account
-def delete(request):
+def delete(request, account):
     pass
 
 #this view will subtract from a balance
