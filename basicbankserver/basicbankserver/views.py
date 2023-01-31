@@ -27,9 +27,22 @@ def one(request, name):
     list_to_send.append(the_account.account_name, the_account.account_balance, the_account.account_number)
 
     return HttpResponse(list_to_send)
-#this view is to make deposits to an account
-def add(request):
-    pass
+
+
+
+#this view will make deposits to an account
+def add(request, account, deposit):
+    #this will put the correct account in a variable
+    the_account = accounts.objects.get(account_name={account})
+
+    #this will
+    the_account.account_balance = the_account.account_balance + deposit
+
+    #this will put the balance into a variable
+    the_balance = the_account.account_balance
+
+    #this will return the current balance
+    return HttpResponse(the_balance)
 
 #this view will delete an entire account
 def delete(request):
