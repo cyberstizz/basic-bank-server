@@ -41,7 +41,6 @@ def add(request, account, deposit):
     elif the_account.account_balance < 100000000:
         the_account.account_balance = the_account.account_balance + deposit
 
-
     #this will put the balance into a variable
     the_balance = the_account.account_balance
 
@@ -54,6 +53,7 @@ def add(request, account, deposit):
 def delete(request, account_name, account_number):
     #this will delete the account requested if the account number is correct, then return it
     the_account = accounts.objects.get(account_name=account_name)
+
     if the_account.account_number == account_number:
         accounts.objects.delete(account_name=account_name)
     #and returning the 
@@ -84,5 +84,10 @@ def subtract(request, account, withdrawal):
 
 
 #thi view will create an account
-def create(request):
-    pass
+def create(request, accountName, accountBalance, accountNumber):
+    try:
+        accounts.objects.create(accounts(account_number=accountNumber, account_balance=accountBalance, account_name=accountName))
+        return HttpResponse(f'this is the newly created account number{accountNumber}')
+    except:
+        return HttpResponse('make this make sense. that account already exists bro, or your account number ain\'t ten digits pick one.')
+
