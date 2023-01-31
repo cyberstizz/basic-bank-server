@@ -5,10 +5,15 @@ from django.http import HttpResponse
 
 def home(request):
     #this view will return every account
-    everything = accounts.objects.all().account_name
+    everything = accounts.objects.all()
+
+    everythinglist = []
+
+    for name in everything:
+        everythinglist.append(name.account_name)
 
 
-    return HttpResponse(f'<p>{everything}</p>')  
+    return HttpResponse(f'<p>{everythinglist}</p>')  
     
 
     return all_of_them
