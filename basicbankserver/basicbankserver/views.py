@@ -13,7 +13,7 @@ def home(request):
         everythinglist.append(name.account_name)
 
 
-    return HttpResponse(f'<p>{everythinglist}</p>')  
+    return HttpResponse(everythinglist)  
     
 
     return all_of_them
