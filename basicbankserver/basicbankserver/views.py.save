@@ -3,15 +3,10 @@ from basicbankserver.models import accounts
 from django.http import HttpResponse
 
 
-def home(request):
+renderdef home(request):
     #this view will return every account
-    everything = accounts.objects.get(account_balance='4758392045').account_name
-
-
-    return HttpResponse(f'<p>{everything}</p>')  
-    
-
-    return all_of_them
+    everything = accounts.objects.all()
+    return render(request, everything)
 
 
 def one(request):
