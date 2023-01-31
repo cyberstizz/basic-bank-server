@@ -18,9 +18,15 @@ def home(request):
 
 
 
-def one(request):
-    pass
+def one(request, name):
+    #this view will return one account
+    the_account = accounts.objects.get(account_name={name})
 
+    list_to_send = []
+
+    list_to_send.append(the_account.account_name, the_account.account_balance, the_account.account_number)
+
+    return HttpResponse(list_to_send)
 #this view is to make deposits to an account
 def add(request):
     pass
