@@ -68,7 +68,7 @@ def delete(request, name, account):
 
 
 #this view will subtract from a balance
-def subtract(request, account, withdrawal):
+def withdraw(request, account, withdrawal):
     #this will put the correct account in a variable
     the_account = accounts.objects.get(account_name={account})
 
@@ -89,7 +89,7 @@ def subtract(request, account, withdrawal):
 
 
 #thi view will create an account
-def create(request, accountName, accountBalance, accountNumber):
+def create(request, accountNumber, accountBalance, accountName):
     try:
         accounts.objects.create(accounts(account_number=accountNumber, account_balance=accountBalance, account_name=accountName))
         return HttpResponse(f'this is the newly created account number{accountNumber}')

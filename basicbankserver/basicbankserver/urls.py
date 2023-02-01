@@ -23,8 +23,8 @@ urlpatterns = [
     path('accounts/<str:name>', views.one, name='one_account'),
     path('accounts/<str:account>/<int:deposit>', views.deposit, name='deposit'),
     path('accounts/delete/<str:name>/<int:account>', views.delete, name='delete'),
-    path('subtract', views.subtract, name='home'),
-    path('create/<int:number>/<int:balance>/<str:name>/', views.subtract, name='home')
+    path('accounts/withdraw/<str:account>/<int:withdrawal>', views.withdraw, name='withdraw'),
+    path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create')
 ]
 
 """
