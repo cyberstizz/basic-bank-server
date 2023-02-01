@@ -79,8 +79,8 @@ def withdraw(request, account, withdrawal):
     if the_account.account_balance - withdrawal < 0:
         return HttpResponse('stop trying to bankrupt yourself')
     elif the_account.account_balance - withdrawal > 0:
-        new_balance = the_account.account_balance - withdrawal
-        the_account.account_balance (account_balance=new_balance)
+        the_account.account_balance = the_account.account_balance - withdrawal
+        the_account.save()
 
 
     #this will put the balance into a variable
