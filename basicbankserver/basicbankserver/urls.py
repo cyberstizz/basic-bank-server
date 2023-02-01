@@ -27,9 +27,7 @@ urlpatterns = [
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create')
 ]
 
-#peter6432
-#peter8432
-#peter5432
+
 
 """
  this is the codecademy code below
