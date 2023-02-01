@@ -55,14 +55,14 @@ def deposit(request, account, deposit):
 
 
 #this view will delete an entire account
-def delete(request, account_name, account_number):
+def delete(request, name, account):
     #this will delete the account requested if the account number is correct, then return it
-    the_account = accounts.objects.get(account_name=account_name)
+    the_account = accounts.objects.get(account_name=name)
 
-    if the_account.account_number == account_number:
-        accounts.objects.delete(account_name=account_name)
+    if the_account.account_number == account:
+        accounts.objects.delete(account_name=name)
     #and returning the 
-    return HttpResponse(account_name)
+    return HttpResponse(name)
 
 
 
