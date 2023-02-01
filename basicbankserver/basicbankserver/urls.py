@@ -20,13 +20,15 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('add', views.add, name='home'),
+    path('add/<str:account>', views.one, name='add'),
     path('delete', views.delete, name='delete'),
     path('subtract', views.subtract, name='home')
 ]
 
 """
- this is the codecademy code from django.shortcuts import render
+ this is the codecademy code below
+ 
+from django.shortcuts import render
 from .models import Owner, Patient
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
