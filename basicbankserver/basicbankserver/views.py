@@ -20,7 +20,7 @@ def home(request):
 
 def one(request, name):
     #this view will return one account
-    the_account = accounts.objects.get(account_name={name})
+    the_account = accounts.objects.get(account_name=name)
     #this creates a list to store everything into
     list_to_send = []
     #this will add each desired property to the list
