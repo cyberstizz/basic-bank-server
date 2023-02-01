@@ -38,7 +38,7 @@ def one(request, name):
 #this view will make deposits to an account
 def deposit(request, account, deposit):
     #this will put the correct account in a variable
-    the_account = accounts.objects.get(account_name={account})
+    the_account = accounts.objects.get(account_name=account)
 
     #this will increment the balance
     if the_account.account_balance + deposit > 100000000:
@@ -60,9 +60,10 @@ def delete(request, name, account):
     the_account = accounts.objects.get(account_name=name)
 
     if the_account.account_number == account:
-        accounts.objects.delete(account_name=name)
+        #accounts.objects.delete(account_name=name)
+        the_account.delete()
     #and returning the 
-    return HttpResponse(name)
+    return HttpResponse(f'this is the account that was deleted {name}')
 
 
 
@@ -90,9 +91,7 @@ def withdraw(request, account, withdrawal):
 
 #thi view will create an account
 def create(request, accountNumber, accountBalance, accountName):
-    try:
-        accounts.objects.create(accounts(account_number=accountNumber, account_balance=accountBalance, account_name=accountName))
+        new_account = accounts.objects.create(account_number=accountNumber, account_balance=accountBalance, account_name=accountName)
+        new_account.save()
         return HttpResponse(f'this is the newly created account number{accountNumber}')
-    except:
-        return HttpResponse('make this make sense. that account already exists bro, or your account number ain\'t ten digits pick one.')
 
