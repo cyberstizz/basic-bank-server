@@ -24,14 +24,19 @@ def one(request, name):
     #this creates a list to store everything into
     list_to_send = []
     #this will add each desired property to the list
-    list_to_send.append(the_account.account_name, the_account.account_balance, the_account.account_number)
+    list_to_send.append(the_account.account_name)
+
+    list_to_send.append(the_account.account_balance)
+
+    list_to_send.append(the_account.account_number)
+
     #and returning that list
     return HttpResponse(list_to_send)
 
 
 
 #this view will make deposits to an account
-def add(request, account, deposit):
+def deposit(request, account, deposit):
     #this will put the correct account in a variable
     the_account = accounts.objects.get(account_name={account})
 
