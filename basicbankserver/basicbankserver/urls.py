@@ -21,7 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('accounts/<str:name>', views.one, name='one_account'),
-    path('accounts/deposits/<int:name>', views.deposit, name='deposit'),
+    path('accounts/<str:account>/<int:deposit>', views.deposit, name='deposit'),
     path('delete', views.delete, name='delete'),
     path('subtract', views.subtract, name='home')
 ]
