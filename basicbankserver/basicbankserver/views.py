@@ -46,6 +46,8 @@ def deposit(request, account, deposit):
     elif the_account.account_balance < 100000000:
         the_account.account_balance = the_account.account_balance + deposit
 
+        the_account.save()
+
     #this will put the balance into a variable
     the_balance = the_account.account_balance
 
@@ -78,7 +80,7 @@ def withdraw(request, account, withdrawal):
         return HttpResponse('stop trying to bankrupt yourself')
     elif the_account.account_balance - withdrawal > 0:
         new_balance = the_account.account_balance - withdrawal
-        accounts.objects.update(the_account.account_balance)
+        the_account.account_balance (account_balance=new_balance)
 
 
     #this will put the balance into a variable
