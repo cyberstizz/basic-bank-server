@@ -71,13 +71,14 @@ def delete(request, name, account):
 #this view will subtract from a balance
 def withdraw(request, account, withdrawal):
     #this will put the correct account in a variable
-    the_account = accounts.objects.get(account_name={account})
+    the_account = accounts.objects.get(account_name=account)
 
     #this will decrement the balance if my conditions are met
     if the_account.account_balance - withdrawal < 0:
         return HttpResponse('stop trying to bankrupt yourself')
-    elif the_account.account_balance > 0:
-        the_account.account_balance = the_account.account_balance - withdrawal
+    elif the_account.account_balance - withdrawal > 0:
+        new_balance = the_account.account_balance - withdrawal
+        accounts.objects.update(the_account.account_balance)
 
 
     #this will put the balance into a variable
