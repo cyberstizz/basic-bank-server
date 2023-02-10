@@ -12,4 +12,4 @@ class accounts(models.Model):
 
 
 class Customers(models.Model):
-    pass
+    name = models.CharField(max_length=30)
