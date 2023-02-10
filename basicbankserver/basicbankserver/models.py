@@ -6,6 +6,7 @@ class accounts(models.Model):
     account_number = models.IntegerField(unique=True)
     account_balance = models.IntegerField(validators=[MaxLengthValidator(10)])
     account_type = models.CharField(max_length=30)
+    customer_ID = models.ForeignKey('basicbankserver.Customers')
 
     class Meta:
         app_label = 'basicbankserver'
