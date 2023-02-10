@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from basicbankserver.models import accounts, Customers
+from basicbankserver.models import accounts, customers
 from django.http import HttpResponse
 
 
 def home(request):
     #this view will return every account
-    everything = Customers.objects.all()
+    everything = customers.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
     everythinglist = []
     #looping through the objects I recieve and adding the account name to my list
@@ -23,7 +23,7 @@ def home(request):
 
 def one(request, name):
     #this view will return one account
-    the_account = Customers.objects.first()
+    the_account = customers.objects.first()
     #this creates a list to store everything into
     list_to_send = []
     #this will add each desired property to the list
@@ -97,7 +97,7 @@ def withdraw(request, account, withdrawal):
 
 #thi view will create an account
 def create(request, name, email, customer_ID):
-        new_account = Customers.objects.create(name=name, email=email, customer_ID=customer_ID)
+        new_account = customers.objects.create(name=name, email=email, customer_ID=customer_ID)
         new_account.save()
         return HttpResponse(f'this is the newly created account number{customer_ID}')
 
