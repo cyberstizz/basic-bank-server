@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from basicbankserver.models import accounts, customers
+from .models import accounts, customers
 from django.http import HttpResponse
 
 

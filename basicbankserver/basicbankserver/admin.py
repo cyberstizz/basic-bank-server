@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import customers, accounts
+from basicbankserver.models import customers, accounts
 
 
 admin.site.register(customers)
