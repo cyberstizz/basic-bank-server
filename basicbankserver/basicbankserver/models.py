@@ -15,3 +15,6 @@ class Customers(models.Model):
     name = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     customer_ID = models.IntegerField()
+
+    class Meta:
+        app_label = 'basicbankserver'
