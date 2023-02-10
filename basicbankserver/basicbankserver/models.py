@@ -9,3 +9,7 @@ class accounts(models.Model):
 
     class Meta:
         app_label = 'basicbankserver'
+
+
+class Customers(models.Model):
+    pass
