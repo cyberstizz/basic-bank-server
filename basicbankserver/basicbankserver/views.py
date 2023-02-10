@@ -11,6 +11,9 @@ def home(request):
     #looping through the objects I recieve and adding the account name to my list
     for name in everything:
         everythinglist.append(name.name)
+        everythinglist.append(name.email)
+        everythinglist.append(name.customer_ID)
+
     
      
         
