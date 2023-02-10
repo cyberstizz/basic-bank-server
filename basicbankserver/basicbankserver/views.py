@@ -5,12 +5,12 @@ from django.http import HttpResponse
 
 def home(request):
     #this view will return every account
-    everything = accounts.objects.all()
+    everything = Customers.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
     everythinglist = []
     #looping through the objects I recieve and adding the account name to my list
     for name in everything:
-        everythinglist.append(name.account_name)
+        everythinglist.append(name.name)
     
      
         
@@ -41,7 +41,7 @@ def one(request, name):
 #this view will make deposits to an account
 def deposit(request, account, deposit):
     #this will put the correct account in a variable
-    the_account = accounts.objects.get(account_name=account)
+    the_account = accounts.objects.get(account_number=account)
 
     #this will increment the balance
     if the_account.account_balance + deposit > 100000000:
@@ -60,9 +60,9 @@ def deposit(request, account, deposit):
 
 
 #this view will delete an entire account
-def delete(request, name, account):
+def delete(request, account):
     #this will delete the account requested if the account number is correct, then return it
-    the_account = accounts.objects.get(account_name=name)
+    the_account = accounts.objects.get(account_number=account)
 
     if the_account.account_number == account:
         #accounts.objects.delete(account_name=name)
