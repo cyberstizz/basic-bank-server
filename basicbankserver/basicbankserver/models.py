@@ -6,7 +6,7 @@ class accounts(models.Model):
     account_number = models.IntegerField(unique=True)
     account_balance = models.IntegerField(validators=[MaxLengthValidator(10)])
     account_type = models.CharField(max_length=30)
-    customer_ID = models.ForeignKey('basicbankserver.Customers', on_delete=models.CASCADE, default='null')
+    customer_ID = models.ForeignKey('basicbankserver.Customers', on_delete=models.CASCADE, default=7)
 
     class Meta:
         app_label = 'basicbankserver'
