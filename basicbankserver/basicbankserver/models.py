@@ -2,20 +2,16 @@ from django.db import models
 from django.core.validators import MaxLengthValidator
 
 
+class Customers(models.Model):
+    name = models.CharField(max_length=30)
+    email = models.CharField(max_length=30)
+    customer_ID = models.IntegerField(unique=True)
+
+
+
 class accounts(models.Model):
     account_number = models.IntegerField(unique=True)
     account_balance = models.IntegerField(validators=[MaxLengthValidator(10)])
     account_type = models.CharField(max_length=30)
-    customer_ID = models.ForeignKey('Customers', on_delete=models.CASCADE, default=7)
+    customer_ID = models.ForeignKey(Customers, on_delete=models.CASCADE)
 
-    class Meta:
-        app_label = 'basicbankserver'
-
-
-class Customers(models.Model):
-    name = models.CharField(max_length=30)
-    email = models.CharField(max_length=30)
-    customer_ID = models.IntegerField()
-
-    class Meta:
-        app_label = 'basicbankserver'

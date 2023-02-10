@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from basicbankserver.models import accounts
+from basicbankserver.models import accounts, Customers
 from django.http import HttpResponse
 
 
@@ -23,15 +23,15 @@ def home(request):
 
 def one(request, name):
     #this view will return one account
-    the_account = accounts.objects.get(account_name=name)
+    the_account = Customers.objects.first()
     #this creates a list to store everything into
     list_to_send = []
     #this will add each desired property to the list
-    list_to_send.append(the_account.account_name)
+    list_to_send.append(the_account.name)
 
-    list_to_send.append(the_account.account_balance)
+    list_to_send.append(the_account.email)
 
-    list_to_send.append(the_account.account_number)
+    list_to_send.append(the_account.customer_ID)
 
     #and returning that list
     return HttpResponse(list_to_send)
@@ -96,8 +96,8 @@ def withdraw(request, account, withdrawal):
 
 
 #thi view will create an account
-def create(request, accountNumber, accountBalance, accountName):
-        new_account = accounts.objects.create(account_number=accountNumber, account_balance=accountBalance, account_name=accountName)
+def create(request, name, email, customer_ID):
+        new_account = Customers.objects.create(name=name, email=email, customer_ID=customer_ID)
         new_account.save()
-        return HttpResponse(f'this is the newly created account number{accountNumber}')
+        return HttpResponse(f'this is the newly created account number{customer_ID}')
 
