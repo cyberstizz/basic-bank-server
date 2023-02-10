@@ -5,7 +5,7 @@ from django.core.validators import MaxLengthValidator
 class Customers(models.Model):
     name = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
-    customer_ID = models.IntegerField(unique=True)
+    customer_ID = models.IntegerField(validators=[MaxLengthValidator(10)], unique=True)
 
 
 
