@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import accounts, customers
+from .models import accounts, User
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -7,14 +7,13 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     #this view will return every account
-    everything = customers.objects.all()
+    everything = User.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
     everythinglist = []
     #looping through the objects I recieve and adding the account name to my list
     for name in everything:
         everythinglist.append(name.name)
-        everythinglist.append(name.email)
-        everythinglist.append(name.customer_ID)
+        everythinglist.append(name.password)
 
     
      
@@ -28,7 +27,7 @@ def home(request):
 
 def getOne(request, name):
     #this view will return one account
-    the_account = customers.objects.first()
+    the_account = User.objects.first()
     #this creates a list to store everything into
     list_to_send = []
     #this will add each desired property to the list
@@ -36,7 +35,7 @@ def getOne(request, name):
 
     list_to_send.append(the_account.email)
 
-    list_to_send.append(the_account.customer_ID)
+    list_to_send.append(the_account.username)
 
     #and returning that list
     return HttpResponse(list_to_send)
@@ -104,14 +103,14 @@ def withdraw(request, account, withdrawal):
 
 
 #thi view will create an account
-def create(request, name, email, customer_ID, account_number, account_balance, account_type):
-        new_customer = customers.objects.create(name=name, email=email, customer_ID=customer_ID)
-        new_customer.save()
+def create(request, username, password, account_number, account_balance, account_type):
+        new_user = User.objects.create(username=username, password=password)
+        new_user.save()
         
         
-        new_account = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, customer_ID=new_customer)
+        new_account = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, user=new_user)
         new_account.save()
-        return HttpResponse(f'this is the newly created account number{customer_ID}, and this is the new account{new_account}')
+        return HttpResponse(f'this is the newly created account number{username}, and this is the new account{new_account}')
 
 
 
