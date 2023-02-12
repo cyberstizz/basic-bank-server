@@ -24,7 +24,7 @@ def home(request):
     
 
 
-
+@login_required
 def getOne(request, name):
     #this view will return one account
     the_account = User.objects.first()
