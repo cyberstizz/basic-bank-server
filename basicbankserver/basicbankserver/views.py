@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import accounts, customers
 from django.http import HttpResponse
+from django.contrib.auth import authenticate
+
 
 
 def home(request):
@@ -115,3 +117,5 @@ def login(request, username, password):
     #addiing the variables that will be used to authenticate
     username = username
     password = password
+
+    authenticate()
