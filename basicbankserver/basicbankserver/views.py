@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import accounts, customers
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -42,7 +42,7 @@ def getOne(request, name):
     return HttpResponse(list_to_send)
 
 
-
+@login_required
 #this view will make deposits to an account
 def deposit(request, account, deposit):
     #this will put the correct account in a variable
