@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from .models import accounts, User
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
+
 
 
 def home(request):
@@ -24,21 +25,21 @@ def home(request):
     
 
 
-@login_required
 def getOne(request, name):
     #this view will return one account
-    the_account = User.objects.first()
+    the_account = User.objects.get(username=name)
     #this creates a list to store everything into
-    list_to_send = []
+    # dictionary_to_send = {}
     #this will add each desired property to the list
-    list_to_send.append(the_account.name)
+    # dictionary_to_send.update({"account": the_account})
 
-    list_to_send.append(the_account.email)
+    #this will grab all accounts associated with this particular user
+    # all_users_accounts = accounts.objects.all(user=the_account)
 
-    list_to_send.append(the_account.username)
+    # dictionary_to_send.accounts = all_users_accounts
 
     #and returning that list
-    return HttpResponse(list_to_send)
+    return HttpResponse(the_account.username)
 
 
 
