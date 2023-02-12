@@ -101,7 +101,7 @@ def withdraw(request, account, withdrawal):
 #thi view will create an account
 def create(request, name, email, customer_ID, account_number, account_balance, account_type):
         new_customer = customers.objects.create(name=name, email=email, customer_ID=customer_ID)
-        
+        new_customer.save()
         
         
         new_account = ''
