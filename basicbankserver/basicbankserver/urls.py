@@ -27,7 +27,7 @@ urlpatterns = [
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create'),
     path('/login', views.login, name='login'),
     path('/logout', views.logout, name='logout'),
-    path('', views.home, name='home')
+    path('/create_account', views.createAccount, name='create_account')
 ]
 
 
