@@ -132,5 +132,7 @@ def logout(request):
 
 
 #this is a view for creating an account
-def createAccount(request, username):
-    pass
+def createAccount(request, account_number, account_balance, account_type, user):
+        newAccount = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, user=user)
+
+        newAccount.save()
