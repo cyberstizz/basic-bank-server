@@ -42,8 +42,9 @@ def getOne(request, name):
     return HttpResponse(list_to_send)
 
 
-@login_required
+
 #this view will make deposits to an account
+@login_required
 def deposit(request, account, deposit):
     #this will put the correct account in a variable
     the_account = accounts.objects.get(account_number=account)
@@ -65,6 +66,7 @@ def deposit(request, account, deposit):
 
 
 #this view will delete an entire account
+@login_required
 def delete(request, account):
     #this will delete the account requested if the account number is correct, then return it
     the_account = accounts.objects.get(account_number=account)
@@ -79,6 +81,7 @@ def delete(request, account):
 
 
 #this view will subtract from a balance
+@login_required
 def withdraw(request, account, withdrawal):
     #this will put the correct account in a variable
     the_account = accounts.objects.get(account_name=account)
