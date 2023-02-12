@@ -26,7 +26,7 @@ urlpatterns = [
     path('accounts/withdraw/<str:account>/<int:withdrawal>', views.withdraw, name='withdraw'),
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create'),
     path('/login', views.login, name='login'),
-    path('', views.home, name='home'),
+    path('/logout', views.logout, name='logout'),
     path('', views.home, name='home')
 ]
 
