@@ -128,3 +128,9 @@ def login(request, username, password):
 #finally a view for the logout route
 def logout(request):
     logout(request)
+
+
+
+#this is a view for creating an account
+def createAccount(request):
+    pass
