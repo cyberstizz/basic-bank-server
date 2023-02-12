@@ -126,5 +126,5 @@ def login(request, username, password):
 
 
 #finally a view for the logout route
-def logout(request, User):
-    pass
+def logout(request):
+    logout(request)
