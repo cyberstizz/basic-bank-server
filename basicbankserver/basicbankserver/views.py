@@ -12,7 +12,7 @@ def home(request):
     everythinglist = []
     #looping through the objects I recieve and adding the account name to my list
     for name in everything:
-        everythinglist.append(name.name)
+        everythinglist.append(name.username)
         everythinglist.append(name.password)
 
     
