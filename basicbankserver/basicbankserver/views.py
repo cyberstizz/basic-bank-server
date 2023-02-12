@@ -132,5 +132,5 @@ def logout(request):
 
 
 #this is a view for creating an account
-def createAccount(request):
+def createAccount(request, username):
     pass
