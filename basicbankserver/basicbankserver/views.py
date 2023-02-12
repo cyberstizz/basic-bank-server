@@ -102,5 +102,5 @@ def withdraw(request, account, withdrawal):
 def create(request, name, email, customer_ID):
         new_account = customers.objects.create(name=name, email=email, customer_ID=customer_ID)
         new_account.save()
-        return HttpResponse(f'this is the newly created account number{customer_ID}')
+        return HttpResponse(f'this is the newly created account number{customer_ID}, and this is the new account{account}')
 
