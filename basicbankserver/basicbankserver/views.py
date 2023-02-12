@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import accounts, User
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 
 
@@ -132,7 +132,10 @@ def logout(request):
 
 
 #this is a view for creating an account
-def createAccount(request, account_number, account_balance, account_type, user):
-        newAccount = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, user=user)
+def createAccount(request, account_number, account_balance, account_type):
+        theuser = get_user_model()
+
+        newAccount = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, user=theuser)
+
 
         newAccount.save()
