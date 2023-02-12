@@ -118,4 +118,4 @@ def login(request, username, password):
     username = username
     password = password
 
-    authenticate()
+    User = authenticate(username=username, password=password)
