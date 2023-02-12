@@ -6,7 +6,6 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     username=models.CharField(max_length=30)
     password=models.CharField(max_length=30)
-    email=models.CharField(max_length=30)
 
 
 class accounts(models.Model):
