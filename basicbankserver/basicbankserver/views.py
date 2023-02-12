@@ -104,10 +104,7 @@ def create(request, name, email, customer_ID, account_number, account_balance, a
         new_customer.save()
         
         
-        new_account = accounts.objects.create(account_number=account_number)
-    account_balance = models.IntegerField()
-    account_type = models.CharField(max_length=30)
-    customer_ID)
+        new_account = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, customer_ID=customer_ID)
         new_account.save()
-        return HttpResponse(f'this is the newly created account number{customer_ID}, and this is the new account{account}')
+        return HttpResponse(f'this is the newly created account number{customer_ID}, and this is the new account{new_account}')
 
