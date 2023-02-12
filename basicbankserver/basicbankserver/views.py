@@ -108,3 +108,6 @@ def create(request, name, email, customer_ID, account_number, account_balance, a
         new_account.save()
         return HttpResponse(f'this is the newly created account number{customer_ID}, and this is the new account{new_account}')
 
+
+
+#now we make a view for the login route
