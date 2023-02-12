@@ -123,3 +123,8 @@ def login(request, username, password):
     User = authenticate(request, username=username, password=password)
 
     login(request, User)
+
+
+#finally a view for the logout route
+def logout(request, User):
+    pass
