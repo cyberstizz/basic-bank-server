@@ -104,7 +104,7 @@ def create(request, name, email, customer_ID, account_number, account_balance, a
         new_customer.save()
         
         
-        new_account = ''
+        new_account = accounts
         new_account.save()
         return HttpResponse(f'this is the newly created account number{customer_ID}, and this is the new account{account}')
 
