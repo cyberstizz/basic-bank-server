@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import accounts, customers
 from django.http import HttpResponse
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login
 
 
 
