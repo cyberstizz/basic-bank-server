@@ -10,7 +10,7 @@ def home(request):
     #this view will return every account
     everything = customers.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
-    everythinglist = []
+    
     #looping through the objects I recieve and adding the account name to my list
     for name in everything:
         everythinglist.append(name.username)
@@ -21,7 +21,7 @@ def home(request):
         
 
     #returning the list of only account names
-    return HttpResponse(everythinglist)  
+    return JsonResponse(everythinglist)  
     
 
 
@@ -50,7 +50,7 @@ def getOne(request):
     # dictionary_to_send.accounts = all_users_accounts
 
     #and returning that list
-    return HttpResponse(biglist)
+    return HttpResponse(theAccounts)
 
 
 
