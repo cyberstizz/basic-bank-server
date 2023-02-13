@@ -1,9 +1,7 @@
 from django.contrib import admin
-from basicbankserver.models import accounts, User
-from django.contrib.auth.admin import UserAdmin
-
+from basicbankserver.models import accounts, customers
 
 
 admin.site.register(accounts)
 
-admin.site.register(User, UserAdmin)
+admin.site.register(customers)

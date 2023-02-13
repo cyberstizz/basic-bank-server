@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from .models import accounts, User
+from .models import accounts, customers
 from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 
 
 
 def home(request):
     #this view will return every account
-    everything = User.objects.all()
+    everything = customers.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
     everythinglist = []
     #looping through the objects I recieve and adding the account name to my list
@@ -25,9 +25,20 @@ def home(request):
     
 
 
-def getOne(request, name):
+def getOne(request):
     #this view will return one account
-    the_account = User.objects.get(username=name)
+    theusername = customers.objects.get(username="meatball")
+
+    theAccounts = accounts.objects.filter(user=theusername)
+
+
+    biglist = []
+
+
+    for account in theAccounts:
+        biglist.append(account.account_number)
+        biglist.append(account.account_type)
+    # auser = the_account.password
     #this creates a list to store everything into
     # dictionary_to_send = {}
     #this will add each desired property to the list
@@ -39,7 +50,7 @@ def getOne(request, name):
     # dictionary_to_send.accounts = all_users_accounts
 
     #and returning that list
-    return HttpResponse(the_account.username)
+    return HttpResponse(biglist)
 
 
 
