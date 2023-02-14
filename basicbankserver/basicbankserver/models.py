@@ -12,5 +12,5 @@ class accounts(models.Model):
     account_balance = models.IntegerField()
     account_type = models.CharField(max_length=30)
     user = models.ForeignKey(customers, on_delete=models.CASCADE)
-    usertest = models.ForeignKey(User)
+    usertest = models.ForeignKey(User, on_delete=models.CASCADE, default='charles')
 
