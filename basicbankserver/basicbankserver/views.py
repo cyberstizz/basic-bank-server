@@ -39,6 +39,7 @@ def getOne(request):
         accountdict = {}
         accountdict.update({"accountnumber": account.account_number})
         accountdict.update({"accounttype": account.account_type})
+        accountdict.update({"accountbalance": account.account_balance})
         dataDictionary.update({f"{account}Object": accountdict})
     # auser = the_account.password
     #this creates a list to store everything into
