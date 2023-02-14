@@ -1,15 +1,16 @@
 from django.shortcuts import render
-from .models import accounts, customers
+from .models import accounts
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from json import dumps
 
 
 
 def home(request):
     #this view will return every account
-    everything = customers.objects.all()
+    everything = User.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
     everythinglist = []
     #looping through the objects I recieve and adding the account name to my list
@@ -28,7 +29,7 @@ def home(request):
 
 def getOne(request):
     #this view will return one account
-    theusername = customers.objects.get(username="stephen")
+    theusername = User.objects.get(username="stephen")
 
     theAccounts = accounts.objects.filter(user=theusername)
 
