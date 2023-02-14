@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 
 
 class customers(models.Model):
@@ -12,4 +12,5 @@ class accounts(models.Model):
     account_balance = models.IntegerField()
     account_type = models.CharField(max_length=30)
     user = models.ForeignKey(customers, on_delete=models.CASCADE)
+    usertest = models.ForeignKey(User)
 
