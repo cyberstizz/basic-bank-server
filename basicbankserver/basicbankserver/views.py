@@ -3,6 +3,7 @@ from .models import accounts, customers
 from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from json import dumps
 
 
 
@@ -41,19 +42,12 @@ def getOne(request):
         accountdict.update({"accounttype": account.account_type})
         accountdict.update({"accountbalance": account.account_balance})
         dataDictionary.update({f"{account}Object": accountdict})
-    # auser = the_account.password
-    #this creates a list to store everything into
-    # dictionary_to_send = {}
-    #this will add each desired property to the list
-    # dictionary_to_send.update({"account": the_account})
+   
+        dataJson = dumps(dataDictionary)
 
-    #this will grab all accounts associated with this particular user
-    # all_users_accounts = accounts.objects.all(user=the_account)
-
-    # dictionary_to_send.accounts = all_users_accounts
 
     #and returning that list
-    return HttpResponse(dataDictionary)
+    return HttpResponse(dataJson)
 
 
 
