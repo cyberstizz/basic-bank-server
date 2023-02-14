@@ -28,7 +28,7 @@ def home(request):
 
 def getOne(request):
     #this view will return one account
-    theusername = customers.objects.get(username="meatball")
+    theusername = customers.objects.get(username="stephen")
 
     theAccounts = accounts.objects.filter(user=theusername)
 
@@ -41,11 +41,11 @@ def getOne(request):
         accountdict.update({"accountnumber": account.account_number})
         accountdict.update({"accounttype": account.account_type})
         accountdict.update({"accountbalance": account.account_balance})
-        dataDictionary.update({f"{account}Object": accountdict})
+        dataDictionary.update({f"account{account.account_number}": accountdict})
    
-        dataJson = dumps(dataDictionary)
 
-
+    #now turning the dictionary into json
+    dataJson = dumps(dataDictionary)
     #and returning that list
     return HttpResponse(dataJson)
 
