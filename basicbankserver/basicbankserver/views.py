@@ -27,12 +27,18 @@ def home(request):
     #returning the list of only account names
     return JsonResponse(everythinglist, safe=False)  
     
-@login_required
-def getOne(request):
-    #this view will return one account
-    theusername = User.objects.get(username="tima")
 
-    theAccounts = accounts.objects.filter(user=theusername)
+def getOne(request):
+    User = authenticate(request, username='tima', password='tima@tima')
+
+    login(request, User)
+
+
+
+    print(f"my authentication status is {User.is_authenticated}")
+    print(f"my user is {User}")
+
+    theAccounts = accounts.objects.filter(user=User)
 
     #creating a data dictionary that will be sent to the client
     dataDictionary = {}
@@ -137,12 +143,11 @@ def thelogin(request):
     print(f"my authentication status is {User.is_authenticated}")
 
 
-    print(f"my authentication status is {User.is_authenticated}")
+    print(f"my user is {User}")
 
-    response = redirect('http://localhost:3000/accounts')
+    return HttpResponse('you should be logged in homy')
+
     
-    return response
-
 #finally a view for the logout route
 def logout(request):
     logout(request)

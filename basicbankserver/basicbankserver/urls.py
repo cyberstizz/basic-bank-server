@@ -19,13 +19,14 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
     path('', include("django.contrib.auth.urls")),
+    path('', views.home, name='home'),
     path('accounts', views.getOne, name='name'),
     path('accounts/<str:account>/<int:deposit>', views.deposit, name='deposit'),
     path('accounts/delete/<int:account>', views.delete, name='delete'),
     path('accounts/withdraw/<str:account>/<int:withdrawal>', views.withdraw, name='withdraw'),
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create'),
+    path('login', include('django.contrib.auth.urls')),
     path('login', views.thelogin, name='login'),
     path('login', include('django.contrib.auth.urls')),
     path('logout', views.logout, name='logout'),
