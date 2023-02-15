@@ -27,7 +27,7 @@ def home(request):
     #returning the list of only account names
     return JsonResponse(everythinglist, safe=False)  
     
-
+@login_required
 def getOne(request):
     #this view will return one account
     theusername = User.objects.get(username="tima")
@@ -50,7 +50,7 @@ def getOne(request):
     dataJson = dumps(dataDictionary)
     #and returning that list
 
-    print(User.is_authenticated)
+    print(f"my authentication status is {User.is_authenticated}")
     return HttpResponse(dataJson)
 
 
@@ -128,16 +128,16 @@ def create(request, username, password, account_number, account_balance, account
 
 
 #now we make a view for the login route
-def thelogin(request, username, password):
+def thelogin(request):
 
-    User = authenticate(request, username=username, password=password)
+    User = authenticate(request, username='tima', password='tima@tima')
 
     login(request, User)
 
-    print(User.is_authenticated)
+    print(f"my authentication status is {User.is_authenticated}")
 
 
-    print(User.is_authenticated)
+    print(f"my authentication status is {User.is_authenticated}")
 
     response = redirect('http://localhost:3000/accounts')
     
