@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 from json import dumps
 
 
@@ -21,15 +22,15 @@ def home(request):
     
      
         
+        print(User.is_authenticated)
 
     #returning the list of only account names
-    return JsonResponse(everythinglist)  
+    return JsonResponse(everythinglist, safe=False)  
     
-
 
 def getOne(request):
     #this view will return one account
-    theusername = User.objects.get(username="stephen")
+    theusername = User.objects.get(username="tima")
 
     theAccounts = accounts.objects.filter(user=theusername)
 
@@ -48,6 +49,8 @@ def getOne(request):
     #now turning the dictionary into json
     dataJson = dumps(dataDictionary)
     #and returning that list
+
+    print(User.is_authenticated)
     return HttpResponse(dataJson)
 
 
@@ -125,15 +128,20 @@ def create(request, username, password, account_number, account_balance, account
 
 
 #now we make a view for the login route
-def login(request, username, password):
-    #addiing the variables that will be used to authenticate
-    username = username
-    password = password
+def thelogin(request, username, password):
 
     User = authenticate(request, username=username, password=password)
 
     login(request, User)
 
+    print(User.is_authenticated)
+
+
+    print(User.is_authenticated)
+
+    response = redirect('http://localhost:3000/accounts')
+    
+    return response
 
 #finally a view for the logout route
 def logout(request):
