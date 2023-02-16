@@ -27,8 +27,7 @@ urlpatterns = [
     path('accounts/withdraw/<str:account>/<int:withdrawal>', views.withdraw, name='withdraw'),
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create'),
     path('login', include('django.contrib.auth.urls')),
-    path('accounts/login', views.thelogin, name='login'),
-    path('login', include('django.contrib.auth.urls')),
+    path('login', views.thelogin, name='login'),
     path('logout', views.logout, name='logout'),
     path('create_account/<int:account_number>/<int:account_balance>/<str:account_type>', views.createAccount, name='create_account')
 ]
