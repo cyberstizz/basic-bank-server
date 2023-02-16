@@ -26,16 +26,17 @@ def home(request):
 
     #returning the list of only account names
     return JsonResponse(everythinglist, safe=False)  
-    
+
 
 def getOne(request):
     User = authenticate(request, username='tima', password='tima@tima')
 
     login(request, User)
+    print(f"this is the login in status based on what the request is telling me {request.user.is_authenticated}")
+    print(f"this is the session object before adjustment{request.session}")
 
-
-
-    print(f"my authentication status is {User.is_authenticated}")
+    print(f"this is the session object{request.session}")
+    print(f"my requst.user is {request.user}")
     print(f"my user is {User}")
 
     theAccounts = accounts.objects.filter(user=User)
