@@ -168,3 +168,7 @@ def createAccount(request, account_number, account_balance, account_type):
 
 
         newAccount.save()
+
+
+def csrf(request):
+    return JsonResponse({'csrfToken': get_token(request)})
