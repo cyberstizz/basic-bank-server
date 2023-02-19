@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from json import dumps
+from django.middleware.csrf import get_token
 
 
 
@@ -33,6 +34,7 @@ def home(request):
     return JsonResponse(everythinglist, safe=False)  
 
 def getOne(request):
+    print(f"this is the requst.body. if you are reading this it's too late {request.body}")
     theUser = authenticate(request, username='tima', password='tima@tima')
 
     login(request, theUser)
