@@ -10,6 +10,11 @@ from json import dumps
 
 
 def home(request):
+    print(request.session.test_cookie_worked())
+
+    theUser = authenticate(request, username='tima', password='tima@tima')
+
+    login(request, theUser)
     #this view will return every account
     everything = User.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
@@ -22,24 +27,22 @@ def home(request):
     
      
         
-        print(User.is_authenticated)
+        print(f"is the user authenticated? {request.user.is_authenticated}")
 
     #returning the list of only account names
     return JsonResponse(everythinglist, safe=False)  
 
-
 def getOne(request):
-    User = authenticate(request, username='tima', password='tima@tima')
+    theUser = authenticate(request, username='tima', password='tima@tima')
 
-    login(request, User)
+    login(request, theUser)
     print(f"this is the login in status based on what the request is telling me {request.user.is_authenticated}")
-    print(f"this is the session object before adjustment{request.session}")
-
-    print(f"this is the session object{request.session}")
+    request.session["test"] = "gingerbreadman"
+    request.session.set_test_cookie()
+    print(f"this is the session object after my little test: object{request.session.get('test')}")
     print(f"my requst.user is {request.user}")
-    print(f"my user is {User}")
-
-    theAccounts = accounts.objects.filter(user=User)
+    print(f"my user is {request.user}")
+    theAccounts = accounts.objects.filter(user=theUser)
 
     #creating a data dictionary that will be sent to the client
     dataDictionary = {}
@@ -57,7 +60,7 @@ def getOne(request):
     dataJson = dumps(dataDictionary)
     #and returning that list
 
-    print(f"my authentication status is {User.is_authenticated}")
+    print(f"my authentication status is {request.user.is_authenticated}")
     return HttpResponse(dataJson)
 
 
@@ -94,7 +97,7 @@ def delete(request, account):
         #accounts.objects.delete(account_name=name)
         the_account.delete()
     #and returning the 
-    return HttpResponse(f'this is the account that was deleted {name}')
+    return HttpResponse(f'this is the account that was deleted {the_account}')
 
 
 
@@ -146,7 +149,7 @@ def thelogin(request):
 
     print(f"my user is {User}")
 
-    return HttpResponse('you should be logged in homy')
+    return redirect('/accounts')
 
     
 #finally a view for the logout route

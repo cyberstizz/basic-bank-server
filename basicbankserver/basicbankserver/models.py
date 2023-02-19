@@ -12,4 +12,6 @@ class accounts(models.Model):
     account_balance = models.IntegerField()
     account_type = models.CharField(max_length=30)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    def ___init__(self):
+        name = self.account_type
 
