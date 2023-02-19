@@ -33,6 +33,7 @@ urlpatterns = [
     path('logout', views.logout, name='logout'),
     path('create_account/<int:account_number>/<int:account_balance>/<str:account_type>', views.createAccount, name='create_account'),
     path('csrf/', views.csrf, name='csrf'),
+    path('ping/', views.ping, name='ping'),
 
 ]
 
