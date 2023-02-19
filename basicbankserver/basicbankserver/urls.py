@@ -31,7 +31,9 @@ urlpatterns = [
     path('login', include('django.contrib.auth.urls')),
     path('login', views.thelogin, name='login'),
     path('logout', views.logout, name='logout'),
-    path('create_account/<int:account_number>/<int:account_balance>/<str:account_type>', views.createAccount, name='create_account')
+    path('create_account/<int:account_number>/<int:account_balance>/<str:account_type>', views.createAccount, name='create_account'),
+    path('csrf/', views.csrf, name='csrf'),
+
 ]
 
 
