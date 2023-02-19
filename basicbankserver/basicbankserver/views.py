@@ -172,3 +172,8 @@ def createAccount(request, account_number, account_balance, account_type):
 
 def csrf(request):
     return JsonResponse({'csrfToken': get_token(request)})
+
+
+
+def ping(request):
+    return JsonResponse({'result': 'OK'})
