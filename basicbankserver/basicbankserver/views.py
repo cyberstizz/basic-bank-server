@@ -39,34 +39,54 @@ def getOne(request):
     theUser = authenticate(request, username='tima', password='tima@tima')
 
     login(request, theUser)
-    print(f"this is the login in status based on what the request is telling me {request.user.is_authenticated}")
-    request.session["test"] = "gingerbreadman"
-    request.session.set_test_cookie()
-    print(f"this is the session object after my little test: object{request.session.get('test')}")
-    print(f"my requst.user is {request.user}")
-    print(f"my user is {request.user}")
+    # print(f"this is the login in status based on what the request is telling me {request.user.is_authenticated}")
+    # request.session["test"] = "gingerbreadman"
+    # request.session.set_test_cookie()
+    # print(f"this is the session object after my little test: object{request.session.get('test')}")
+    # print(f"my requst.user is {request.user}")
+    # print(f"my user is {request.user}")
+    # theAccounts = accounts.objects.filter(user=theUser)
+    # thisuser = f"{request.user.username}"
+    # #creating a data dictionary that will be sent to the client
+    # dataDictionary = {}
+
+
+    # for account in theAccounts:
+    #     accountdict = {}
+    #     accountdict.update({"user": thisuser})
+    #     accountdict.update({"accountnumber": account.account_number})
+    #     accountdict.update({"accounttype": account.account_type})
+    #     accountdict.update({"accountbalance": account.account_balance})
+    #     dataDictionary.update({f"account{account.account_number}": accountdict})
+   
+
+    # dataDictionary.update({"user": f"{request.user}"})
+    # #now turning the dictionary into json
+    # dataJson = dumps(dataDictionary)
+    # #and returning that list
+
+    # print(f"my authentication status is {request.user.is_authenticated}")
+    # # return HttpResponse(dataJson, thisuser)
+    # --------------------------------------------------------------------
+    theUser = authenticate(request, username='tima', password='tima@tima')
+    login(request, theUser)
+
     theAccounts = accounts.objects.filter(user=theUser)
-    thisuser = f"{request.user.username}"
     #creating a data dictionary that will be sent to the client
     dataDictionary = {}
 
-
+    dataDictionary.update({"data": {}})
+    dataDictionary["data"].update({"username": f"{request.user}"})
+    dataDictionary["data"].update({"accounts": []})
+    
     for account in theAccounts:
-        accountdict = {}
-        accountdict.update({"user": thisuser})
-        accountdict.update({"accountnumber": account.account_number})
-        accountdict.update({"accounttype": account.account_type})
-        accountdict.update({"accountbalance": account.account_balance})
-        dataDictionary.update({f"account{account.account_number}": accountdict})
-   
-
-    dataDictionary.update({"user": f"{request.user}"})
-    #now turning the dictionary into json
-    dataJson = dumps(dataDictionary)
-    #and returning that list
-
-    print(f"my authentication status is {request.user.is_authenticated}")
-    return HttpResponse(dataJson, thisuser)
+        dataDictionary["data"]["accounts"].append({
+            "accountnumber": account.account_number,
+            "accounttype": account.account_type,
+            "accountbalance": account.account_balance
+            })
+    
+    return JsonResponse(dataDictionary)
 
 
 
@@ -184,3 +204,35 @@ def ping(request):
 
 def csrf_failure(request, reason=""):
     ...
+
+
+def testroute(request):
+    theUser = authenticate(request, username='tima', password='tima@tima')
+    login(request, theUser)
+
+    theAccounts = accounts.objects.filter(user=theUser)
+    #creating a data dictionary that will be sent to the client
+    dataDictionary = {}
+
+    dataDictionary.update({"data": {}})
+    dataDictionary["data"].update({"username": f"{request.user}"})
+    dataDictionary["data"].update({"accounts": []})
+    
+    for account in theAccounts:
+        dataDictionary["data"]["accounts"].append({
+            "accountnumber": account.account_number,
+            "accounttype": account.account_type,
+            "accountbalance": account.account_balance
+            })
+    
+    return JsonResponse(dataDictionary)
+
+
+    # dataDictionary.update({"user": f"{request.user}"})
+    # #now turning the dictionary into json
+    # dataJson = dumps(dataDictionary)
+    # #and returning that list
+
+    # print(f"my authentication status is {request.user.is_authenticated}")
+    # return HttpResponse(dataJson, thisuser)
+
