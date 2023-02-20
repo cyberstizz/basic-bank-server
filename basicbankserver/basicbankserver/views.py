@@ -33,6 +33,7 @@ def home(request):
     #returning the list of only account names
     return JsonResponse(everythinglist, safe=False)  
 
+@login_required
 def getOne(request):
     print(f"this is the requst.body. if you are reading this it's too late {request.body}")
     theUser = authenticate(request, username='tima', password='tima@tima')
@@ -45,25 +46,27 @@ def getOne(request):
     print(f"my requst.user is {request.user}")
     print(f"my user is {request.user}")
     theAccounts = accounts.objects.filter(user=theUser)
-
+    thisuser = f"{request.user.username}"
     #creating a data dictionary that will be sent to the client
     dataDictionary = {}
 
 
     for account in theAccounts:
         accountdict = {}
+        accountdict.update({"user": thisuser})
         accountdict.update({"accountnumber": account.account_number})
         accountdict.update({"accounttype": account.account_type})
         accountdict.update({"accountbalance": account.account_balance})
         dataDictionary.update({f"account{account.account_number}": accountdict})
    
 
+    dataDictionary.update({"user": f"{request.user}"})
     #now turning the dictionary into json
     dataJson = dumps(dataDictionary)
     #and returning that list
 
     print(f"my authentication status is {request.user.is_authenticated}")
-    return HttpResponse(dataJson)
+    return HttpResponse(dataJson, thisuser)
 
 
 
@@ -177,3 +180,7 @@ def csrf(request):
 
 def ping(request):
     return JsonResponse({'result': 'OK'})
+
+
+def csrf_failure(request, reason=""):
+    ...
