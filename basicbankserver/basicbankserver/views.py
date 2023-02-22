@@ -172,6 +172,7 @@ def thelogin(request):
         username = data["username"]
         password = data["password"]
         this_user = authenticate(request, username=username, password=password)
+        print(f"this is the user {this_user}")
         login(request, this_user)
 
     return HttpResponse('should be logged in now!')
