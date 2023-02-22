@@ -30,7 +30,7 @@ urlpatterns = [
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create'),
     path('login', include('django.contrib.auth.urls')),
     path('login', views.thelogin, name='login'),
-    path('logout', views.logout, name='logout'),
+    path('logout', views.the_logout, name='logout'),
     path('create_account/<int:account_number>/<int:account_balance>/<str:account_type>', views.createAccount, name='create_account'),
     path('csrf/', views.csrf, name='csrf'),
     path('ping/', views.ping, name='ping'),

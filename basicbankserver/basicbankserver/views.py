@@ -1,21 +1,20 @@
 from django.shortcuts import render
 from .models import accounts
 from django.http import HttpResponse, JsonResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from json import dumps
+from json import dumps, loads
 from django.middleware.csrf import get_token
 
 
 
 def home(request):
-    print(request.session.test_cookie_worked())
 
-    theUser = authenticate(request, username='tima', password='tima@tima')
+    # theUser = authenticate(request, username='tima', password='tima@tima')
 
-    login(request, theUser)
+    # login(request, theUser)
     #this view will return every account
     everything = User.objects.all()
     #creating a list to add all of the account names to (not sure if this is necessary)
@@ -25,7 +24,6 @@ def home(request):
         everythinglist.append(name.username)
         everythinglist.append(name.password)
 
-    
      
         
         print(f"is the user authenticated? {request.user.is_authenticated}")
@@ -164,28 +162,42 @@ def create(request, username, password, account_number, account_balance, account
 
 #now we make a view for the login route
 def thelogin(request):
-
-    User = authenticate(request, username='tima', password='tima@tima')
-
-    login(request, User)
-
-    print(f"my authentication status is {User.is_authenticated}")
+    # print("HI")
 
 
-    print(f"my user is {User}")
+    if request.method == "POST":
+        data = loads(request.body)
+        print(f"this is the data {data['username']}")
+          
+        username = data["username"]
+        password = data["password"]
+        this_user = authenticate(request, username=username, password=password)
+        login(request, this_user)
 
-    return redirect('/accounts')
+    return HttpResponse('should be logged in now!')
+
+
+
+
+
+
+    print(f"my authentication status is {request.user.is_authenticated}")
+
+
+    print(f"my user is {request.user}")
+
 
     
 #finally a view for the logout route
-def logout(request):
+def the_logout(request):
     logout(request)
+    return HttpResponse('all good here you are logged out!')
 
 
 
 #this is a view for creating an account
 def createAccount(request, account_number, account_balance, account_type):
-        theuser = get_user_model()
+        # theuser = get_user_model()
 
         newAccount = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, user=theuser)
 
