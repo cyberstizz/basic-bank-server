@@ -144,7 +144,7 @@ def thelogin(request):
         print(f"this is the user {this_user}")
         login(request, this_user)
 
-    return HttpResponse('should be logged in now!')
+    return HttpResponse('success')
 
 
 
