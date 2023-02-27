@@ -84,7 +84,7 @@ def deposit(request):
     if the_account.account_balance + deposit_amount > 100000000:
         return HttpResponse('stop being greedy')
     elif the_account.account_balance + deposit_amount < 100000000:
-        the_account.account_balance = the_account.account_balance + deposit
+        the_account.account_balance = the_account.account_balance + deposit_amount
 
         the_account.save()
 
