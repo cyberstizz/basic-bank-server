@@ -113,21 +113,21 @@ def withdraw(request):
 
     withdrawal_amount = data['withdrawal_amount']
 
-    the_account = accounts.objects.get(account_name=account)
+    the_account = accounts.objects.get(account_number=account_number)
 
     #this will decrement the balance if my conditions are met
-    if the_account.account_balance - withdrawal < 0:
+    if the_account.account_balance - withdrawal_amount < 0:
         return HttpResponse('stop trying to bankrupt yourself')
-    elif the_account.account_balance - withdrawal > 0:
-        the_account.account_balance = the_account.account_balance - withdrawal
+    elif the_account.account_balance - withdrawal_amount > 0:
+        the_account.account_balance = the_account.account_balance - withdrawal_amount
         the_account.save()
 
 
     #this will put the balance into a variable
-    the_balance = the_account.account_balance
+    the_new_balance = the_account.account_balance
 
     #this will return the current balance
-    return HttpResponse(the_balance)
+    return HttpResponse(f"great news! your withdrawal went through and yourt new balance is {the_new_balance}")
 
 
 
