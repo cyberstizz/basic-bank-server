@@ -97,7 +97,17 @@ def delete(request, account):
 #this view will subtract from a balance
 @login_required
 def withdraw(request):
-    #this will put the correct account in a variable
+    #first lets deserialize that req.body
+    data = loads(request.body)
+
+
+    #the informationi that I need to make the withdrawal is:
+    #the account number, and the withdrawal amount
+
+    #first lets establish the account number
+
+    account_number = data['account_number']
+
     the_account = accounts.objects.get(account_name=account)
 
     #this will decrement the balance if my conditions are met
