@@ -24,7 +24,7 @@ urlpatterns = [
     path('accounts', views.getOne, name='home'),
     path('accounts/login/', include("django.contrib.auth.urls")),
     path('accounts/login/', views.thelogin, name='accountslogin'),
-    path('deposit/', views.deposit, name='deposit'),
+    path('deposit', views.deposit, name='deposit'),
     path('accounts/delete/<int:account>', views.delete, name='delete'),
     path('withdraw', views.withdraw, name='withdraw'),
     path('create/<int:accountNumber>/<int:accountBalance>/<str:accountName>/', views.create, name='create'),

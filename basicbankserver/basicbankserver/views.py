@@ -59,23 +59,42 @@ def getOne(request):
 
 #this view will make deposits to an account
 @login_required
-def deposit(request, account, deposit):
-    #this will put the correct account in a variable
-    the_account = accounts.objects.get(account_number=account)
+def deposit(request):
+    #first lets deserialize that req.body
+    print('this is the withdraw view and I have been called')
+    data = loads(request.body)
+    print(data)
+
+
+    #the informationi that I need to make the withdrawal is:
+    #the account number, and the withdrawal amount
+
+    #first lets establish the account number
+
+    account_number = data['account_number']
+
+
+    #now the withdrawal amount
+
+    deposit_amount = data['deposit_amount']
+
+    the_account = accounts.objects.get(account_number=account_number)
 
     #this will increment the balance
-    if the_account.account_balance + deposit > 100000000:
+    if the_account.account_balance + deposit_amount > 100000000:
         return HttpResponse('stop being greedy')
-    elif the_account.account_balance < 100000000:
+    elif the_account.account_balance + deposit_amount < 100000000:
         the_account.account_balance = the_account.account_balance + deposit
 
         the_account.save()
 
+
     #this will put the balance into a variable
-    the_balance = the_account.account_balance
+    the_new_balance = the_account.account_balance
 
     #this will return the current balance
-    return HttpResponse(the_balance)
+    return HttpResponse(f"great news! your withdrawal went through and yourt new balance is {the_new_balance}")
+
 
 
 
@@ -98,7 +117,9 @@ def delete(request, account):
 @login_required
 def withdraw(request):
     #first lets deserialize that req.body
+    print('this is the withdraw view and I have been called')
     data = loads(request.body)
+    print(data)
 
 
     #the informationi that I need to make the withdrawal is:
