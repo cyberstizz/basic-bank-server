@@ -108,6 +108,11 @@ def withdraw(request):
 
     account_number = data['account_number']
 
+
+    #now the withdrawal amount
+
+    withdrawal_amount = data['withdrawal_amount']
+
     the_account = accounts.objects.get(account_name=account)
 
     #this will decrement the balance if my conditions are met
