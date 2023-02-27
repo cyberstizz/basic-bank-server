@@ -96,7 +96,7 @@ def delete(request, account):
 
 #this view will subtract from a balance
 @login_required
-def withdraw(request, account, withdrawal):
+def withdraw(request):
     #this will put the correct account in a variable
     the_account = accounts.objects.get(account_name=account)
 
