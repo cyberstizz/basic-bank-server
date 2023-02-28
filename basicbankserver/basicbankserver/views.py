@@ -172,6 +172,7 @@ def create(request):
         print(data['account'])
         account = data['account']
         print(data['deposit'])
+        deposit = data['deposit']
 
 
 
