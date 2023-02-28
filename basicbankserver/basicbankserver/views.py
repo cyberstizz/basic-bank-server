@@ -165,7 +165,7 @@ def create(request):
         print(data)
 
         print('these are the items just sent')
-        print(data['name'])
+        print(data['username'])
         username = data['username']
         print(data['password'])
         password = data['password']
@@ -195,7 +195,7 @@ def create(request):
 
 
 #now we make a view for the login route
-def thelogin(request):
+def login(request):
     # print("HI")
 
 
@@ -207,7 +207,9 @@ def thelogin(request):
         password = data["password"]
         this_user = authenticate(request, username=username, password=password)
         print(f"this is the user {this_user}")
-        login(request, this_user)
+
+        if this_user is not None:
+            login(request)
 
     return HttpResponse('success')
 
