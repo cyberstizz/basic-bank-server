@@ -31,7 +31,7 @@ urlpatterns = [
     path('login', include('django.contrib.auth.urls')),
     path('login', views.thelogin, name='login'),
     path('logout', views.the_logout, name='logout'),
-    path('create_account/<int:account_number>/<int:account_balance>/<str:account_type>', views.createAccount, name='create_account'),
+    path('create_account', views.createAccount, name='create_account'),
     path('csrf/', views.csrf, name='csrf'),
     path('ping/', views.ping, name='ping'),
     path('testroute/', views.testroute, name='testroute'),
