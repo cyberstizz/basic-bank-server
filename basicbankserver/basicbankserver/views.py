@@ -166,6 +166,7 @@ def create(request):
         print(data['name'])
         name = data['name']
         print(data['password'])
+        password = data['password']
         print(data['email'])
         print(data['account'])
         print(data['deposit'])
