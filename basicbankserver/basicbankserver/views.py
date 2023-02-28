@@ -170,6 +170,7 @@ def create(request):
         print(data['email'])
         email = data['email']
         print(data['account'])
+        account = data['account']
         print(data['deposit'])
 
 
