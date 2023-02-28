@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from json import dumps, loads
 from django.middleware.csrf import get_token
+import random
+
 
 
 
@@ -176,7 +178,7 @@ def create(request):
 
 
 
-        new_user = User.objects.create(username=username, password=password)
+        new_user = User.objects.create(username=name, password=password)
         new_user.save()
         
         
