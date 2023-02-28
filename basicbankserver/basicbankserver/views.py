@@ -154,7 +154,7 @@ def withdraw(request):
 
 
 #thi view will create an account
-def create(request, username, password, account_number, account_balance, account_type):
+def create(request):
         new_user = User.objects.create(username=username, password=password)
         new_user.save()
         
