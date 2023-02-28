@@ -164,6 +164,7 @@ def create(request):
 
         print('these are the items just sent')
         print(data['name'])
+        name = data['name']
         print(data['password'])
         print(data['email'])
         print(data['account'])
