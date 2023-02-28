@@ -176,13 +176,15 @@ def create(request):
         print(data['deposit'])
         deposit = data['deposit']
 
+        print(random.randint(100,999))
+        account_number = random.randint(100, 999)
 
 
         new_user = User.objects.create(username=name, password=password)
         new_user.save()
         
         
-        new_account = accounts.objects.create(account_number=account_number, account_balance=account_balance, account_type=account_type, user=new_user)
+        new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=new_user)
         new_account.save()
         return HttpResponse(f'this is the newly created account number{username}, and this is the new account{new_account}')
 
