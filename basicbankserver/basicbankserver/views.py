@@ -102,7 +102,7 @@ def deposit(request):
 
 #this view will delete an entire account
 @login_required
-def delete(request, account):
+def delete(request):
     #this will delete the account requested if the account number is correct, then return it
     the_account = accounts.objects.get(account_number=account)
 
