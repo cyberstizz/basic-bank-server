@@ -195,13 +195,15 @@ def create(request):
 
 
 #now we make a view for the login route
-def login(request):
+def thelogin(request):
     # print("HI")
 
 
     if request.method == "POST":
         data = loads(request.body)
-        print(f"this is the data {data['username']}")
+        print(f"this is the username {data['username']}")
+        print(f"this is the password {data['password']}")
+
           
         username = data["username"]
         password = data["password"]
@@ -209,9 +211,11 @@ def login(request):
         print(f"this is the user {this_user}")
 
         if this_user is not None:
-            login(request)
+            login(request, this_user)
+            return HttpResponse('success')
 
-    return HttpResponse('success')
+
+    return HttpResponse('something went wrong')
 
 
 
