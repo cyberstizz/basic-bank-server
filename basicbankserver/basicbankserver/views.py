@@ -162,12 +162,12 @@ def create(request):
         data = loads(request.body)
         print(data)
 
-        print(f'these are the items just sent')
-        print(f'these are the items just sent')
-        print(f'these are the items just sent')
-        print(f'these are the items just sent')
-        print(f'these are the items just sent')
-        print(f'these are the items just sent')
+        print('these are the items just sent')
+        print(data['name'])
+        print(data['password'])
+        print(data['email'])
+        print(data['account'])
+        print(data['deposit'])
 
 
 
