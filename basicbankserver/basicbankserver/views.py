@@ -180,7 +180,7 @@ def create(request):
         account_number = random.randint(100, 999)
 
 
-        new_user = User.objects.create(username=username, password=password)
+        new_user = User.objects.create_user(username=username, password=password)
         new_user.save()
         
         
