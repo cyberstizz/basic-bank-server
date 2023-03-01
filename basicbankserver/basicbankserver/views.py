@@ -193,7 +193,8 @@ def create(request):
         return HttpResponse(f'this is the newly created account number{username}, and this is the new account{account_number}')
 
 
-
+def delete(request);
+    pass
 
 
 
