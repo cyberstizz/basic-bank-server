@@ -217,6 +217,8 @@ def deleteEverything(request):
     print(data['user'])
     user_to_delete = data['user']
     goodbye_forever = User.objects.get(username=user_to_delete)
+    goodbye_forever.delete()
+    
     return HttpResponse(status=200)
 
 
