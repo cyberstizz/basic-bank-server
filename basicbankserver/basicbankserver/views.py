@@ -199,6 +199,7 @@ def delete(request):
 
     print('these are the items just sent')
     print(data['delete_account'])
+    account_to_delete = data['delete_acount']
 
 
 
