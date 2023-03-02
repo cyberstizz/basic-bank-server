@@ -194,7 +194,11 @@ def create(request):
 
 
 def delete(request):
-    pass
+    data = loads(request.body)
+    print(data)
+
+    print('these are the items just sent')
+    print(data['d'])
 
 
 
