@@ -232,9 +232,8 @@ def thelogin(request):
         if this_user is not None:
             login(request, this_user)
             return HttpResponse('success')
-
-
-    return HttpResponse('something went wrong')
+        else:
+            return HttpResponse(status=404)
 
 
 
