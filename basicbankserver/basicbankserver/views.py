@@ -201,6 +201,9 @@ def delete(request):
     print(data['delete_account'])
     account_to_delete = data['delete_acount']
 
+    theAccount = accounts.objects.get(account_number=account_to_delete)
+
+
 
 
 
