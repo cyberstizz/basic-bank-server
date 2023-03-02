@@ -210,6 +210,8 @@ def delete(request):
 
 
 
+def deleteEverything(request):
+    pass
 
 
 
