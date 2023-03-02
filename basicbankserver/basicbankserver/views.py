@@ -204,6 +204,9 @@ def delete(request):
     theAccount = accounts.objects.get(account_number=account_to_delete)
 
     accounts.objects.delete(theAccount)
+    theAccount.save()
+    return HttpResponse(f'this is the account that was deleted{theAccount}, sorry to see you go')
+
 
 
 
