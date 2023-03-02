@@ -199,12 +199,12 @@ def delete(request):
 
     print('these are the items just sent')
     print(data['delete_account'])
-    account_to_delete = data['delete_acount']
+    account_to_delete = data['delete_account']
 
     theAccount = accounts.objects.get(account_number=account_to_delete)
 
     accounts.objects.delete(theAccount)
-    theAccount.save()
+    # theAccount.save()
     return HttpResponse(f'this is the account that was deleted{theAccount}, sorry to see you go')
 
 
