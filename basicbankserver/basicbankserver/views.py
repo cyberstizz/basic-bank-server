@@ -211,7 +211,11 @@ def delete(request):
 
 
 def deleteEverything(request):
-    pass
+    data = loads(request.body)
+    print(data)
+
+    print(data['user'])
+    user_to_delete = data['user']
 
 
 
