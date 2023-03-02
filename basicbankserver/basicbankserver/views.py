@@ -216,6 +216,8 @@ def deleteEverything(request):
 
     print(data['user'])
     user_to_delete = data['user']
+    return HttpResponse(status=200)
+
 
 
 
