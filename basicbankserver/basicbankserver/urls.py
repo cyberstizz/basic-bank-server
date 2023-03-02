@@ -35,7 +35,9 @@ urlpatterns = [
     path('csrf/', views.csrf, name='csrf'),
     path('ping/', views.ping, name='ping'),
     path('testroute/', views.testroute, name='testroute'),
-    path('delete', views.delete, name='delete')
+    path('delete', views.delete, name='delete'),
+    path('deleteEverything', views.deleteEverything, name='deleteEverything')
+
 
 ]
 
