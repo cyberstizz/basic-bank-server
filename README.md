@@ -2,6 +2,7 @@
 
 ![](https://concept-stories.s3.ap-south-1.amazonaws.com/test/Stories%20-%20Images_story_77297/image_2019-08-08%2013%3A54%3A12.963547%2B00%3A00)
 
+
 #      **Basic Bank Server**
 
 ## _this is a Django server application created to communicate with a React frontend_
