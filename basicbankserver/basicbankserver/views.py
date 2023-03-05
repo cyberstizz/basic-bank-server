@@ -295,15 +295,6 @@ def thelogin(request):
 
 
 
-
-
-
-    print(f"my authentication status is {request.user.is_authenticated}")
-
-
-    print(f"my user is {request.user}")
-
-
     
 #finally a view for the logout route
 def the_logout(request):
