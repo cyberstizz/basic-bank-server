@@ -194,7 +194,36 @@ def create(request):
 
 
 def openCreate(request):
-    pass
+    
+        #first lets deserialize that req.body
+        print('this is the withdraw view and I have been called')
+        data = loads(request.body)
+        print(data)
+
+        print('these are the items just sent')
+        print(data['username'])
+        username = data['username']
+        print(data['password'])
+        password = data['password']
+        print(data['email'])
+        email = data['email']
+        print(data['account'])
+        account = data['account']
+        print(data['deposit'])
+        deposit = data['deposit']
+
+        print(random.randint(100,999))
+        account_number = random.randint(100, 999)
+
+
+        new_user = User.objects.create_user(username=username, password=password)
+        new_user.save()
+        
+        
+        new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=new_user)
+        new_account.save()
+        return HttpResponse(f'this is the newly created account number{username}, and this is the new account{account_number}')
+
 
 
 
