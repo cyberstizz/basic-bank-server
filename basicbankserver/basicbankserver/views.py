@@ -212,11 +212,11 @@ def openCreate(request):
         account_number = random.randint(100, 999)
 
 
-        new_user = User.objects.create_user(username=username, password=password)
-        new_user.save()
+        theUser = request.user
+
         
         
-        new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=new_user)
+        new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=theUser)
         new_account.save()
         return HttpResponse(f'this is the newly created account number{username}, and this is the new account{account_number}')
 
