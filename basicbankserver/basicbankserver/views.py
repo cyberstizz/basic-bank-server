@@ -129,37 +129,39 @@ def delete(request):
 def withdraw(request):
     #first lets deserialize that req.body
     print('this is the withdraw view and I have been called')
-    data = loads(request.body)
-    print(data)
+
+    try:
+        data = loads(request.body)
+        print(data)
 
 
-    #the informationi that I need to make the withdrawal is:
-    #the account number, and the withdrawal amount
+        #the informationi that I need to make the withdrawal is:
+        #the account number, and the withdrawal amount
 
-    #first lets establish the account number
+        #first lets establish the account number
 
-    account_number = data['account_number']
-
-
-    #now the withdrawal amount
-
-    withdrawal_amount = data['withdrawal_amount']
-
-    the_account = accounts.objects.get(account_number=account_number)
-
-    #this will decrement the balance if my conditions are met
-    if the_account.account_balance - withdrawal_amount < 0:
-        return HttpResponse('stop trying to bankrupt yourself')
-    elif the_account.account_balance - withdrawal_amount > 0:
-        the_account.account_balance = the_account.account_balance - withdrawal_amount
-        the_account.save()
+        account_number = data['account_number']
 
 
-    #this will put the balance into a variable
-    the_new_balance = the_account.account_balance
+        #now the withdrawal amount
 
-    #this will return the current balance
-    return HttpResponse(f"great news! your withdrawal went through and yourt new balance is {the_new_balance}")
+        withdrawal_amount = data['withdrawal_amount']
+
+        the_account = accounts.objects.get(account_number=account_number)
+
+        #this will decrement the balance if my conditions are met
+        if the_account.account_balance - withdrawal_amount < 0:
+            return HttpResponse('stop trying to bankrupt yourself')
+        elif the_account.account_balance - withdrawal_amount > 0:
+            the_account.account_balance = the_account.account_balance - withdrawal_amount
+            the_account.save()
+
+
+        #this will put the balance into a variable
+        the_new_balance = the_account.account_balance
+
+        #this will return the current balance
+        return HttpResponse(f"great news! your withdrawal went through and yourt new balance is {the_new_balance}")
 
 
 
