@@ -203,10 +203,6 @@ def openCreate(request):
         print('these are the items just sent')
         print(data['username'])
         username = data['username']
-        print(data['password'])
-        password = data['password']
-        print(data['email'])
-        email = data['email']
         print(data['account'])
         account = data['account']
         print(data['deposit'])
