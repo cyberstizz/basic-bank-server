@@ -199,7 +199,8 @@ def create(request):
             new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=new_user)
             new_account.save()
             return HttpResponse(f'this is the newly created account number{username}, and this is the new account{account_number}')
-
+        except:
+            raise Http404
 
 def openCreate(request):
     
