@@ -40,25 +40,24 @@ def home(request):
 def getOne(request):
     print(f"this is the requst.body. if you are reading this it's too late {request.user.username}")
     
-    theUser = request.user
-       
+    try:
+        theUser = request.user
+        theAccounts = accounts.objects.filter(user=theUser)
+        #creating a data dictionary that will be sent to the client
+        dataDictionary = {}
 
-    theAccounts = accounts.objects.filter(user=theUser)
-    #creating a data dictionary that will be sent to the client
-    dataDictionary = {}
-
-    dataDictionary.update({"data": {}})
-    dataDictionary["data"].update({"username": f"{request.user}"})
-    dataDictionary["data"].update({"accounts": []})
-    
-    for account in theAccounts:
-        dataDictionary["data"]["accounts"].append({
-            "accountnumber": account.account_number,
-            "accounttype": account.account_type,
-            "accountbalance": account.account_balance
-            })
-    
-    return JsonResponse(dataDictionary)
+        dataDictionary.update({"data": {}})
+        dataDictionary["data"].update({"username": f"{request.user}"})
+        dataDictionary["data"].update({"accounts": []})
+        
+        for account in theAccounts:
+            dataDictionary["data"]["accounts"].append({
+                "accountnumber": account.account_number,
+                "accounttype": account.account_type,
+                "accountbalance": account.account_balance
+                })
+        
+        return JsonResponse(dataDictionary)
 
 
 
