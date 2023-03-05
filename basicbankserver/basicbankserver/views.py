@@ -325,7 +325,10 @@ def csrf(request):
 
 
 def ping(request):
-    return JsonResponse({'result': 'OK'})
+    try:
+        return JsonResponse({'result': 'OK'})
+    except:
+        raise Http404
 
 
 def csrf_failure(request, reason=""):
