@@ -203,29 +203,29 @@ def create(request):
             raise Http404
 
 def openCreate(request):
-    
+        try:
         #first lets deserialize that req.body
-        print('this is the withdraw view and I have been called')
-        data = loads(request.body)
-        print(data)
+            print('this is the withdraw view and I have been called')
+            data = loads(request.body)
+            print(data)
 
-        print('these are the items just sent')
-        print(data['account'])
-        account = data['account']
-        print(data['deposit'])
-        deposit = data['deposit']
+            print('these are the items just sent')
+            print(data['account'])
+            account = data['account']
+            print(data['deposit'])
+            deposit = data['deposit']
 
-        print(random.randint(100,999))
-        account_number = random.randint(100, 999)
+            print(random.randint(100,999))
+            account_number = random.randint(100, 999)
 
 
-        theUser = request.user
+            theUser = request.user
 
-        
-        
-        new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=theUser)
-        new_account.save()
-        return HttpResponse(f'this is the newly created account number{theUser}, and this is the new account{account_number}')
+            
+            
+            new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=theUser)
+            new_account.save()
+            return HttpResponse(f'this is the newly created account number{theUser}, and this is the new account{account_number}')
 
 
 
