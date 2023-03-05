@@ -331,9 +331,6 @@ def ping(request):
         raise Http404
 
 
-def csrf_failure(request, reason=""):
-    ...
-
 
 def testroute(request):
     theUser = authenticate(request, username='tima', password='tima@tima')
