@@ -272,25 +272,26 @@ def deleteEverything(request):
 
 #now we make a view for the login route
 def thelogin(request):
-    # print("HI")
 
+    try:
+        if request.method == "POST":
+            data = loads(request.body)
+            print(f"this is the username {data['username']}")
+            print(f"this is the password {data['password']}")
 
-    if request.method == "POST":
-        data = loads(request.body)
-        print(f"this is the username {data['username']}")
-        print(f"this is the password {data['password']}")
+            
+            username = data["username"]
+            password = data["password"]
+            this_user = authenticate(request, username=username, password=password)
+            print(f"this is the user {this_user}")
 
-          
-        username = data["username"]
-        password = data["password"]
-        this_user = authenticate(request, username=username, password=password)
-        print(f"this is the user {this_user}")
-
-        if this_user is not None:
-            login(request, this_user)
-            return HttpResponse('success')
-        else:
-            return HttpResponse(status=404)
+            if this_user is not None:
+                login(request, this_user)
+                return HttpResponse('success')
+            else:
+                return HttpResponse(status=404)
+    except:
+        raise Http404
 
 
 
