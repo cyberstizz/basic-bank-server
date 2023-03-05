@@ -106,17 +106,18 @@ def deposit(request):
 @login_required
 def delete(request):
 
-    data = loads(request.body)
-    print(data)
-    #this will delete the account requested if the account number is correct, then return it
-    account = data['account']
-    the_account = accounts.objects.get(account_number=account)
+    try:
+        data = loads(request.body)
+        print(data)
+        #this will delete the account requested if the account number is correct, then return it
+        account = data['account']
+        the_account = accounts.objects.get(account_number=account)
 
-    if the_account.account_number == account:
-        #accounts.objects.delete(account_name=name)
-        the_account.delete()
-    #and returning the 
-    return HttpResponse(f'this is the account that was deleted {the_account}')
+        if the_account.account_number == account:
+            #accounts.objects.delete(account_name=name)
+            the_account.delete()
+        #and returning the 
+        return HttpResponse(f'this is the account that was deleted {the_account}')
 
 
 
