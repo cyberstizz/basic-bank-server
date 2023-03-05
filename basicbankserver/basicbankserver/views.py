@@ -298,9 +298,11 @@ def thelogin(request):
     
 #finally a view for the logout route
 def the_logout(request):
-    logout(request)
-    return HttpResponse('all good here you are logged out!')
-
+    try:
+        logout(request)
+        return HttpResponse('all good here you are logged out!')
+    except:
+        raise Http404
 
 
 #this is a view for creating an account
