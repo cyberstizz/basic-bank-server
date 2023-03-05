@@ -333,32 +333,27 @@ def ping(request):
 
 
 def testroute(request):
-    theUser = authenticate(request, username='tima', password='tima@tima')
-    login(request, theUser)
+    try:
+        theUser = authenticate(request, username='tima', password='tima@tima')
+        login(request, theUser)
 
-    theAccounts = accounts.objects.filter(user=theUser)
-    #creating a data dictionary that will be sent to the client
-    dataDictionary = {}
+        theAccounts = accounts.objects.filter(user=theUser)
+        #creating a data dictionary that will be sent to the client
+        dataDictionary = {}
 
-    dataDictionary.update({"data": {}})
-    dataDictionary["data"].update({"username": f"{request.user}"})
-    dataDictionary["data"].update({"accounts": []})
-    
-    for account in theAccounts:
-        dataDictionary["data"]["accounts"].append({
-            "accountnumber": account.account_number,
-            "accounttype": account.account_type,
-            "accountbalance": account.account_balance
-            })
-    
-    return JsonResponse(dataDictionary)
+        dataDictionary.update({"data": {}})
+        dataDictionary["data"].update({"username": f"{request.user}"})
+        dataDictionary["data"].update({"accounts": []})
+        
+        for account in theAccounts:
+            dataDictionary["data"]["accounts"].append({
+                "accountnumber": account.account_number,
+                "accounttype": account.account_type,
+                "accountbalance": account.account_balance
+                })
+        
+        return JsonResponse(dataDictionary)
+    except:
+        raise Http404
 
-
-    # dataDictionary.update({"user": f"{request.user}"})
-    # #now turning the dictionary into json
-    # dataJson = dumps(dataDictionary)
-    # #and returning that list
-
-    # print(f"my authentication status is {request.user.is_authenticated}")
-    # return HttpResponse(dataJson, thisuser)
 
