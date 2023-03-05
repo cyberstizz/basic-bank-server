@@ -97,7 +97,8 @@ def deposit(request):
 
         #this will return the current balance
         return HttpResponse(f"great news! your withdrawal went through and yourt new balance is {the_new_balance}")
-
+    except:
+        raise Http404
 
 
 
