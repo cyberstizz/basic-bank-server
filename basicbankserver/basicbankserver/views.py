@@ -254,15 +254,18 @@ def delete(request):
 
 
 def deleteEverything(request):
-    data = loads(request.body)
-    print(data)
+    try:
+        data = loads(request.body)
+        print(data)
 
-    print(data['user'])
-    user_to_delete = data['user']
-    goodbye_forever = User.objects.get(username=user_to_delete)
-    goodbye_forever.delete()
-    
-    return HttpResponse(status=200)
+        print(data['user'])
+        user_to_delete = data['user']
+        goodbye_forever = User.objects.get(username=user_to_delete)
+        goodbye_forever.delete()
+        
+        return HttpResponse(status=200)
+    except:
+        raise Http404
 
 
 
