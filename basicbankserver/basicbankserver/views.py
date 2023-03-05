@@ -118,6 +118,8 @@ def delete(request):
             the_account.delete()
         #and returning the 
         return HttpResponse(f'this is the account that was deleted {the_account}')
+    except:
+        raise Http404
 
 
 
