@@ -18,20 +18,23 @@ def home(request):
 
     # login(request, theUser)
     #this view will return every account
-    everything = User.objects.all()
-    #creating a list to add all of the account names to (not sure if this is necessary)
-    everythinglist = []
-    #looping through the objects I recieve and adding the account name to my list
-    for name in everything:
-        everythinglist.append(name.username)
-        everythinglist.append(name.password)
+    try:
+        everything = User.objects.all()
+        #creating a list to add all of the account names to (not sure if this is necessary)
+        everythinglist = []
+        #looping through the objects I recieve and adding the account name to my list
+        for name in everything:
+            everythinglist.append(name.username)
+            everythinglist.append(name.password)
 
-     
         
-        print(f"is the user authenticated? {request.user.is_authenticated}")
+            
+            print(f"is the user authenticated? {request.user.is_authenticated}")
 
-    #returning the list of only account names
-    return JsonResponse(everythinglist, safe=False)  
+        #returning the list of only account names
+        return JsonResponse(everythinglist, safe=False)  
+    except:
+        raise Http404
 
 @login_required
 def getOne(request):
