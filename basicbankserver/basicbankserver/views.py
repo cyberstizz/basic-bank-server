@@ -216,7 +216,7 @@ def openCreate(request):
         
         new_account = accounts.objects.create(account_number=account_number, account_balance=deposit, account_type=account, user=theUser)
         new_account.save()
-        return HttpResponse(f'this is the newly created account number{username}, and this is the new account{account_number}')
+        return HttpResponse(f'this is the newly created account number{theUser}, and this is the new account{account_number}')
 
 
 
