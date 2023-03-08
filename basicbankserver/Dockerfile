@@ -1,3 +1,3 @@
 FROM python3
 WORKDIR /app
-COPY requirements.txt dest
+COPY requirements.txt /app
