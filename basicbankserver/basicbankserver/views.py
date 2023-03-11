@@ -322,10 +322,12 @@ def transfer(request):
             data = loads(request.body)
             transfer_amount = data['transfer_amount']
             print(f"this is the transfer amount {transfer_amount}")
-            transfer_from = data['tranasfer_from']
-            print(f"this is the transfer amount {transfer_from}")
+            transfer_from = data['transfer_from']
+            print(f"this is the transfer from {transfer_from}")
             transfer_to = data['transfer_to']
             print(f"this is the transfer amount {transfer_to}")
+            accountToTransfer = accounts.objects.get(account_number=transfer_to)
+            accountFromTransfer = accounts.objects.get(account_number=transfer_from)
     except:
         raise Http404    
 
