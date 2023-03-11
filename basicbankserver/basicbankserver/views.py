@@ -332,8 +332,23 @@ def transfer(request):
     #check to see if theaccount to Transfer + the transfer amount will be over 999999
     #if so return some sort of error message
 
-    #check to see if thea account from - the fransfer amount will be under 0
-    #is so resturn some sort of error message
+    #check to see if the account from - the transfer amount will be under 0
+    #if so, return some sort of error message
+
+
+    #subtract the transfer_amount from the transfer from account
+
+   
+    #add the transfer_amount to the transfer to account
+
+    
+    #save the transfer_from acccount
+
+
+    #save the transfer_to account
+
+
+    #add the amount  I want to 
 
     
 
