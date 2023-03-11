@@ -28,6 +28,7 @@ urlpatterns = [
     path('accounts/delete/<int:account>', views.delete, name='delete'),
     path('withdraw', views.withdraw, name='withdraw'),
     path('create', views.create, name='create'),
+    path('transfer', views.transfer, name='transfer'),
     path('open_create', views.openCreate, name='openCreate'),
     path('login', include('django.contrib.auth.urls')),
     path('login', views.thelogin, name='login'),
