@@ -347,6 +347,7 @@ def transfer(request):
         accountFromTransfer.save()
 
     #save the transfer_to account
+        accountToTransfer.save()
 
 
     #add the amount  I want to 
