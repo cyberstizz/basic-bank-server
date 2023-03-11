@@ -321,8 +321,11 @@ def transfer(request):
         if request.method == "POST":
             data = loads(request.body)
             transfer_amount = data['transfer_amount']
+            print(f"this is the transfer amount {transfer_amount}")
+            transfer_from = data['tranasfer_from']
+            print(f"this is the transfer amount {transfer_from}")
             transfer_to = data['transfer_to']
-
+            print(f"this is the transfer amount {transfer_to}")
     except:
         raise Http404    
 
