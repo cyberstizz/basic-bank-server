@@ -331,7 +331,7 @@ def transfer(request):
 
     #check to see if theaccount to Transfer + the transfer amount will be over 999999
     #if so return some sort of error message
-        if transfer_to + transfer_amount > 1000000:
+        if accountToTransfer.account_balance + transfer_amount > 1000000:
             return HttpResponse(status=404)
     #check to see if the account from - the transfer amount will be under 0
     #if so, return some sort of error message
