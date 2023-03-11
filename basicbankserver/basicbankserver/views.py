@@ -318,7 +318,8 @@ def createAccount(request, account_number, account_balance, account_type):
 
 def transfer(request):
     try:
-        print(4)
+        if request.method == "POST":
+            date = loads(request.body)
 
     except:
         raise Http404    
