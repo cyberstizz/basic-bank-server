@@ -324,7 +324,7 @@ def transfer(request):
             print(f"this is the transfer amount {transfer_amount}")
             transfer_from = data['transfer_from']
             print(f"this is the transfer from {transfer_from}")
-            transfer_to = data['t   ransfer_to']
+            transfer_to = data['transfer_to']
             print(f"this is the transfer amount {transfer_to}")
             accountToTransfer = accounts.objects.get(account_number=transfer_to)
             accountFromTransfer = accounts.objects.get(account_number=transfer_from)
