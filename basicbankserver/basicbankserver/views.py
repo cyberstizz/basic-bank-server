@@ -316,6 +316,10 @@ def createAccount(request, account_number, account_balance, account_type):
             raise Http404
 
 
+def transfer(request):
+    pass
+
+
 def csrf(request):
     try:
         return JsonResponse({'csrfToken': get_token(request)})
