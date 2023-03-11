@@ -335,13 +335,13 @@ def transfer(request):
             return HttpResponse(status=404)
     #check to see if the account from - the transfer amount will be under 0
     #if so, return some sort of error message
-        if transfer_from - transfer_amount < 0:
+        if accountFromTransfer.account_balance - transfer_amount < 0:
             return HttpResponse(status=404)
     #subtract the transfer_amount from the transfer from account
-
+        accountFromTransfer.account_balance = accountFromTransfer.account_balance - transfer_amount
    
     #add the transfer_amount to the transfer to account
-
+        accountToTransfer.account_balance = accountToTransfer.account_balance + transfer_amount
     
     #save the transfer_from acccount
 
