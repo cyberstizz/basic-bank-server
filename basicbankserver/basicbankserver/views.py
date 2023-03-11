@@ -317,7 +317,11 @@ def createAccount(request, account_number, account_balance, account_type):
 
 
 def transfer(request):
-    pass
+    try:
+        print(4)
+
+    except:
+        raise Http404    
 
 
 def csrf(request):
