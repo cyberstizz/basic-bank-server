@@ -344,7 +344,7 @@ def transfer(request):
         accountToTransfer.account_balance = accountToTransfer.account_balance + transfer_amount
     
     #save the transfer_from acccount
-
+        accountFromTransfer.save()
 
     #save the transfer_to account
 
