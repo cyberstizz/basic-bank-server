@@ -19,7 +19,7 @@
 
 
 ### Synopsis
-Basic bank is an application created to mirror how the typicall bank website works.
+Basic bank is an application created to mirror how the typical bank website works.
 it has most of the typical features one would come to expect from a bank. Personally
 I bank with Wells Fargo, and I abosolutely LOVE how their website looks. Beacause of
 this a lot of how my main page and the sign up page looks is inspired by their themes.
