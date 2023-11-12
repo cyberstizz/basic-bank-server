@@ -28,10 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-CORS_ORIGIN_ALLOW_ALL = True;
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','https://basic-bank-49327162c5c5.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com',]
 
 # Access-Control-Allow-Origin: 'http://localhost:3000'
 
@@ -40,8 +40,10 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:3000','https://basic-bank-49327162c5c5
 
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com',]
+
 # change to https://app.example.com in production settings
-CORS_ORIGIN_WHITELIST = ['https://basic-bank-49327162c5c5.herokuapp.com']
+CORS_ORIGIN_WHITELIST = ['https://basic-bank-49327162c5c5.herokuapp.com',]
 
 
 INSTALLED_APPS = [
