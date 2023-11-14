@@ -31,9 +31,9 @@ ALLOWED_HOSTS = []
 CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
-CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com',]
+CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com']
 
-# Access-Control-Allow-Origin: 'http://localhost:3000'
+Access_Control_Allow_Origin = ['https://basic-bank-49327162c5c5.herokuapp.com']
 
 # Access-Control-Allow-Credentials: true
 
