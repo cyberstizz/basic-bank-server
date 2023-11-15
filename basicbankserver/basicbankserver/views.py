@@ -273,6 +273,8 @@ def deleteEverything(request):
 #now we make a view for the login route
 def thelogin(request):
 
+    print(f"CSRF Token from client: {request.META.get('HTTP_X_CSRFTOKEN')}")
+
     try:
         if request.method == "POST":
             data = loads(request.body)
