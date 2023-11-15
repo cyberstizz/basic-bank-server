@@ -23,15 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m_5$#$!jp@h0@7q=w6rq!0*xd43&-1uah7v$3*my41idf^$jdp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['thebasic-bank-server-540feefa2a06.herokuapp.com', '.herokuapp.com', 'basic-bank-49327162c5c5.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com', 'basic-bank-49327162c5c5.herokuapp.com']
 
 CORS_ORIGIN_ALLOW_ALL = False
 # Application definition
 
-CSRF_TRUSTED_ORIGINS = ['basic-bank-49327162c5c5.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com']
 
 
 CORS_ALLOW_CREDENTIALS = True
