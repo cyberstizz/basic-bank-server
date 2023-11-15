@@ -28,14 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['thebasic-bank-server-540feefa2a06.herokuapp.com', '.herokuapp.com', 'basic-bank-49327162c5c5.herokuapp.com']
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ORIGIN_ALLOW_ALL = False
 # Application definition
 
-CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com']
-
-Access_Control_Allow_Origin = ['https://basic-bank-49327162c5c5.herokuapp.com']
-
-# Access-Control-Allow-Credentials: true
+CSRF_TRUSTED_ORIGINS = ['basic-bank-49327162c5c5.herokuapp.com']
 
 
 CORS_ALLOW_CREDENTIALS = True
