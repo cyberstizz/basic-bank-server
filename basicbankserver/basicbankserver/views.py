@@ -367,6 +367,7 @@ def csrf(request):
 
     try:
         theToken = get_token(request)
+        print(theToken)
         return JsonResponse({'csrfToken': theToken})
     except:
         raise Http404
