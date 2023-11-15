@@ -127,7 +127,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-CSRF_FAILURE_VIEW = 'basicbankserver.views.theLogin'
+CSRF_FAILURE_VIEW = 'basicbankserver.views.thelogin'
 
 
 
