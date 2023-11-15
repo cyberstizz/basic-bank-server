@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-m_5$#$!jp@h0@7q=w6rq!0*xd43&-1uah7v$3*my41idf^$jdp
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['thebasic-bank-server-540feefa2a06.herokuapp.com', '.herokuapp.com', 'https://basic-bank-49327162c5c5.herokuapp.com']
+ALLOWED_HOSTS = ['thebasic-bank-server-540feefa2a06.herokuapp.com', '.herokuapp.com', 'basic-bank-49327162c5c5.herokuapp.com']
 
 CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
