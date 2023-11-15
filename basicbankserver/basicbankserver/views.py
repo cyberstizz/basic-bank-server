@@ -364,9 +364,6 @@ def transfer(request):
 
 
 def csrf(request):
-    csrf_token = get_token(request)
-    print(csrf_token)
-
     try:
         return JsonResponse({'csrfToken': get_token(request)})
     except:
