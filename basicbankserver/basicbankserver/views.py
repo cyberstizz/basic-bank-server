@@ -8,6 +8,9 @@ from django.shortcuts import redirect
 from json import dumps, loads
 from django.middleware.csrf import get_token
 import random
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 
@@ -364,10 +367,10 @@ def transfer(request):
 
 
 def csrf(request):
-
     try:
         theToken = get_token(request)
         print(theToken)
+        logger.info(theToken)
         return JsonResponse({'csrfToken': theToken})
     except:
         raise Http404
