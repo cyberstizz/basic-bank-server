@@ -364,8 +364,10 @@ def transfer(request):
 
 
 def csrf(request):
+
     try:
-        return JsonResponse({'csrfToken': get_token(request)})
+        theToken = get_token(request)
+        return JsonResponse({'csrfToken': theToken})
     except:
         raise Http404
 
