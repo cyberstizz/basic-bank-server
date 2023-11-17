@@ -89,21 +89,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'basicbankserver.wsgi.application'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        },
-    },
-}
 
 
 # Database
@@ -146,9 +131,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-
-CSRF_FAILURE_VIEW = 'basicbankserver.views.csrf_failure'
 
 
 

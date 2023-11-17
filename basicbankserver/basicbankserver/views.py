@@ -368,12 +368,10 @@ def transfer(request):
 
 def csrf(request):
     try:
-        response = HttpResponse()
         theToken = get_token(request)
         print(theToken)
         logger.info(theToken)
-        response.set_cookie('csrftoken', theToken)
-        return JsonResponse({'csrfToken': theToken})
+        return JsonResponse.set_cookie({'csrfToken': theToken})
     except:
         raise Http404
 
