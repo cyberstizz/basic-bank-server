@@ -272,8 +272,8 @@ def deleteEverything(request):
 
 
 
-def csrf_failure(request, reason=""):
-    return JsonResponse({'error': 'CSRF token missing or incorrect.'}, status=403)
+# def csrf_failure(request, reason=""):
+#     return JsonResponse({'error': 'CSRF token missing or incorrect.'}, status=403)
 
 
 #now we make a view for the login route
