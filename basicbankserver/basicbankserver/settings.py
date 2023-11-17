@@ -23,23 +23,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-m_5$#$!jp@h0@7q=w6rq!0*xd43&-1uah7v$3*my41idf^$jdp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'basic-bank-49327162c5c5.herokuapp.com']
+ALLOWED_HOSTS = ['.herokuapp.com', 'basic-bank-49327162c5c5.herokuapp.com', 'localhost', '127.0.0.1']
 
 CORS_ORIGIN_ALLOW_ALL = False
 # Application definition
 
-CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com']
-
+CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
 
 CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com',]
+CORS_ALLOWED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
 
 # change to https://app.example.com in production settings
-CORS_ORIGIN_WHITELIST = ['https://basic-bank-49327162c5c5.herokuapp.com',]
+CORS_ORIGIN_WHITELIST = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
 
 
 INSTALLED_APPS = [
@@ -66,21 +65,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'basicbankserver.urls'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-        },
-    },
-}
+
 
 TEMPLATES = [
     {
