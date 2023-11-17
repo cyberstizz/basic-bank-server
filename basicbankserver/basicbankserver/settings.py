@@ -33,6 +33,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CSRF_TRUSTED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
 
+CSRF_COOKIE_SECURE = False
+
+CSRF_COOKIE_HTTPONLY = False
+
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
