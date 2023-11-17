@@ -4,8 +4,7 @@ from django.http import HttpResponse, JsonResponse, Http404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import redirect
-from json import dumps, loads
+from json import loads
 from django.middleware.csrf import get_token
 import random
 import logging
@@ -366,14 +365,27 @@ def transfer(request):
         raise Http404    
 
 
+# def csrf(request):
+#     try:
+#         theToken = get_token(request)
+#         print(theToken)
+#         logger.info(theToken)
+#         JsonResponse().set_cookie({'csrftoken': theToken})
+#         return JsonResponse({'csrfToken': theToken})
+#     except:
+#         raise Http404
+    
 def csrf(request):
     try:
         theToken = get_token(request)
         print(theToken)
         logger.info(theToken)
-        JsonResponse().set_cookie('csrftoken', theToken)
-        return JsonResponse({'csrfToken': theToken})
-    except:
+
+        response = JsonResponse({'csrfToken': theToken})
+        response.set_cookie('csrftoken', theToken, httponly=False)
+        return response
+    except Exception as e:
+        logger.error(f"Error in csrf endpoint: {e}")
         raise Http404
 
 
