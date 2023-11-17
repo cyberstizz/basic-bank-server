@@ -272,8 +272,8 @@ def deleteEverything(request):
 
 
 
-# def csrf_failure(request, reason=""):
-#     return JsonResponse({'error': 'CSRF token missing or incorrect.'}, status=403)
+def csrf_failure(request, reason=""):
+    return JsonResponse({'error': 'CSRF token missing or incorrect.'}, status=403)
 
 
 #now we make a view for the login route
@@ -368,10 +368,12 @@ def transfer(request):
 
 def csrf(request):
     try:
+        response = HttpResponse()
         theToken = get_token(request)
         print(theToken)
         logger.info(theToken)
-        return JsonResponse.set_cookie({'csrfToken': theToken})
+        response.set_cookie('csrftoken', theToken)
+        return JsonResponse({'csrfToken': theToken})
     except:
         raise Http404
 
