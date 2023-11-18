@@ -41,6 +41,13 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
 
+CSRF_COOKIE_SAMESITE = 'None'
+CSRF_COOKIE_SECURE = True  # Send CSRF cookie only over HTTPS
+
+SESSION_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SECURE = True 
+
+
 # change to https://app.example.com in production settings
 CORS_ORIGIN_WHITELIST = ['https://basic-bank-49327162c5c5.herokuapp.com', 'http://localhost:3000']
 
